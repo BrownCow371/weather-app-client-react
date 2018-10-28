@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux';
 import {fetchWeather} from '../actions/actions.js';
-import Weather5Days from '../components/Weather5Days.js';
+import FiveDayWeather from '../components/FiveDayWeather.js';
 
 class App extends Component {
 
   componentDidMount(){
+    //fetch current weather
     this.props.fetchWeather();
   }
 
@@ -18,7 +19,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <p>Does this really work</p>
-          <Weather5Days weather={this.props.weather} />
+          <FiveDayWeather weather={this.props.weather} />
           
         </header>
       </div>
