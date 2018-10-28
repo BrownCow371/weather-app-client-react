@@ -1,8 +1,11 @@
 import {defaultWeatherState} from './defaultState.js'
+import {defaultForecastState} from './defaultState.js'
+
 export default function appReducer(
     state = {
         loading: false,
-        weather: defaultWeatherState,
+        weather: [],
+        forecast: defaultForecastState,
         user: [],
         preferences: []
     }, 
@@ -13,6 +16,8 @@ export default function appReducer(
             return {...state, loading: true}
         case 'FETCH_WEATHER':
             return {...state, weather: action.payload, loading: false}
+        case 'FETCH_FORECAST':
+            return {...state, forecast: action.payload, loading:false}
         default:
         return state;
     }
