@@ -1,4 +1,40 @@
-export const defaultWeatherState = [
+export const defaultWeatherState = [ {
+    weather: [
+        {
+          id: '',
+          main: '',
+          description: '',
+          icon: '' 
+        }
+    ],
+    main: {
+        temp: '',
+        pressure: '',
+        humidity: '',
+        temp_min: '',
+        temp_max: ''
+      },
+    visibility: '',
+    wind: {
+        speed: '',
+        deg: '',
+        gust: ''
+      },
+    cloud: {
+        all: ''
+      },
+    rain: {
+        "3h": ''
+      },
+    snow: {
+        "3h": ''
+      },
+    dt: ''
+
+}]
+
+
+export const defaultForecastState = [
     {
         dt: '',
         main: {
