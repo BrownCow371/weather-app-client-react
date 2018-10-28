@@ -1,7 +1,8 @@
+import {defaultWeatherState} from './defaultState.js'
 export default function appReducer(
     state = {
         loading: false,
-        weather: [{dt_txt: ''}],
+        weather: defaultWeatherState,
         user: [],
         preferences: []
     }, 
