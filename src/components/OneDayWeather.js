@@ -3,28 +3,26 @@ import {connect} from 'react-redux'
 
 class OneDayWeather extends Component {
 
-
     render() {
-        // let iconUrl = this.props.weather.map(weather => `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`)[0]
-
+        console.log("weather", this.props.weather)
         return (
             <>
-                <h2>Current Weather</h2>
+            <h2>Current Weather</h2>
                     
-            {this.props.weather.map((weather, index) => (
-                <ul key={index}>    
-                     <li >{weather.main.temp}</li>
-                     <li>{weather.weather[0].main}</li>
-                     <li><img src={"http://openweathermap.org/img/w/" + weather.weather[0].icon + ".png"} alt="weather icon"/></li>
-                 </ul> ))}
+            {this.props.weather.map((weather) => (
+                <div key={weather.id}>    
+                     <p><strong>Temperature:</strong> {weather.temp}</p>
+                     <p><strong>Conditions:</strong> {weather.main}</p>
+                     <p><img src={"http://openweathermap.org/img/w/" + weather.icon + ".png"} alt="weather icon"/></p>
+                 </div> ))}
             </>
         )
     }
 }
 
-// const mapStoreToProps = (state) => {
-//     return {weather: state.weather}
-//   }
+const mapStoreToProps = (state) => {
+    return {weather: state.weather}
+  }
 
-//   export default connect(mapStoreToProps)(OneDayWeather)
-export default OneDayWeather;
+  export default connect(mapStoreToProps)(OneDayWeather)
+// export default OneDayWeather;
