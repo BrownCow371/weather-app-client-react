@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {OneDayWeather} from './OneDayWeather.js'
+import OneDayWeather from './OneDayWeather.js'
 
 
 class FiveDayWeather extends Component {
