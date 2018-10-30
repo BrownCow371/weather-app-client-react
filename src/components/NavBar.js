@@ -1,11 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+
 const NavBar = () => {
+
+
     return (
-        <div className="navbar">
-            <button><NavLink to ="/" exact>Home</NavLink> </button>
-            <button><NavLink to ="/weather" exact>Weather Search</NavLink> </button>
+        <div className="navbar clearfix">
+            <button className="big-button" ><NavLink to ="/" exact>Home</NavLink> </button>
+            <button className="big-button"><NavLink to ="/weather" exact>Weather Search</NavLink> </button> 
+            <button className="big-button"><NavLink to ="/activities" exact>Activity List</NavLink> </button> 
         </div>
     )
 }
