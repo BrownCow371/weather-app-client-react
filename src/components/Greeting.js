@@ -1,20 +1,18 @@
 import React, {Component} from 'react';
-import WeatherSearch from './WeatherSearch.js';
-import { Link } from 'react-router-dom';
+import WeatherSearch from '../containers/WeatherSearch.js';
+// import { Link } from 'react-router-dom';
 
-{/* <Link to = "/weather" exact>Weather Search</Link> */}
 
-class Greeting extends Component {
+const Greeting = () => {
+// <Link to = "/weather" exact>Click Here to Search the Weather!</Link>  
+//                 <p className="center">Use the NavBar above to get started!</p>
 
-    render(){
-        return(
+
+         return(
             <div>
-                <h1>Welcome to the Weather Based Activity Suggestion App!</h1>
-                <WeatherSearch />
+                <h1 className="center">Welcome to the Weather Based Activity App!</h1>
             </div>
          )
-    }
-
 }
 
 export default Greeting
