@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -6,9 +6,177 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+/* --- Welcome Page Styles --- */
+body {
+  /* background: url(./images/dog.jpeg) no-repeat center top; */
+  background-color: rgb(52, 207, 142);
+  color: #333;
+  font-family: Sans-Serif;
+  /* line-height: 18px; */
+}
+
+.wrapper {
+  border: solid;
+  /* background: #fff; */
+  background: url(./images/dog.jpeg) no-repeat center;
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  margin: 2em auto;
+  max-width: 960px;
+  padding: 2.25%; /* 18px / 800px */
+  width: 85%;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 54px;
+}
+
+h2 {
+  border-bottom: 2px solid #ccc;
+  font-size: 24px;
+  line-height: 36px;
+  margin-bottom: 16px;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 36px;
+}
+
+p {
+  margin: 6px 6px;
+}
+
+.center {
+  text-align: center;
+}
+.main {
+  overflow: hidden;
+}
+
+.content {
+  float: left;
+  width: 60%; /* 480px / 800px */
+}
+
+.sidebar {
+  background: #eee;
+  border: 1px solid #ccc;
+  float: right;
+  padding: 2.08333333333%; /* 5px / 240px */
+  width: 30%; /* 240px / 800px */
+}
+
+.sidebar ul {
+  font-size: 14px;
+}
+
+/* .branding {
+  clear: both;
+} */
+
+footer.branding {
+  border-top: 2px solid #ccc;
+  margin-top: 20px;
+  padding-top: 20px;
+  /* color: rgb(52, 207, 142); */
+  color: white;
+  font: bold;
+}
+
+/* --- Signup/Login Page Styles --- */
+.signup, .login, {
+  border: solid;
+  width: 33%;
+  padding: 2em;
+  }
+
+.weather-box {
+  border: solid;
+  padding: 1em;
+  text-align: center;
+  /* background: #FFFF99; */
+  /* background: #D2FFB1; */
+  background: #EC6B4E;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;
+  justify-content: center; */
+  width: 33%;
+  margin: auto;
+}
+
+.activities-box {
+  border: solid;
+  padding: 1em;
+  /* background: #FFFF99; */
+  background: #D2FFB1;
+  /* background: #EC6B4E; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 33%;
+  margin: auto;
+}
+
+.warning {
+  color: red;
+  }
+
+/* --- Table Styles --- */
+#table {
+  margin: 0 0 20px;
+  border: solid;
+}
+
+#table th, td {
+  padding: 10px;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+#table tr:nth-child(odd) {
+  background: #efefef;
+}
+
+#table th {
+  background: #555;
+  color: white;
+}
+
+/* --- Button /input Styles --- */
+.big-button {
+  margin: 0 10px 20px;
+  padding: 10px;
+  float: left;
+  width: auto;
+  height: 42px;
+  border:2px solid #ccc;
+  font-size: 1em;
+}
+
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.field_with_errors {
+  border: 2px solid red;
 }
