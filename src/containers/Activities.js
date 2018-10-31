@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchActivities} from '../actions/actions.js';
+import ActivityList from '../components/ActivityList.js'
 
 class Activities extends Component {
 
@@ -12,20 +13,14 @@ class Activities extends Component {
         return (
             <>
                 <h2 className="center">Activities List!</h2>
-                    <div className="activities-box">
-                        <ul>
-                            {this.props.activities.map((activity) => (
-                                <li key="activity.id">{activity.desc}</li>
-                            ))}
-                        </ul>
-                    </div>
-             </>
+                <ActivityList activities={this.props.activities}/>  
+            </>
         )
     }
 }
 
-const mapStoreToProps = (state) => {
+const mapStateToProps = (state) => {
     return {activities: state.activities}
   }
 
-export default connect(mapStoreToProps, {fetchActivities})(Activities)
+export default connect(mapStateToProps, {fetchActivities})(Activities)
