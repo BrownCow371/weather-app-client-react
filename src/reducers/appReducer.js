@@ -6,7 +6,8 @@ export default function appReducer(
         loading: false,
         weather: [],
         forecast: [],
-        activities: []
+        activities: [],
+        activity: {}
        }, 
     action){
 
@@ -20,7 +21,7 @@ export default function appReducer(
         case 'FETCH_ACTIVITIES':
             return {...state, activities: action.payload, loading: false}
         case 'FETCH_ACTIVITY':
-            return {...state, activities: [action.payload], loading: false}
+            return {...state, activity: action.payload, loading: false}
         default:
         return state;
     }
