@@ -20,8 +20,6 @@ export default function appReducer(
             return {...state, forecast: action.payload, loading:false}
         case 'FETCH_ACTIVITIES':
             return {...state, activities: action.payload, loading: false}
-        case 'FETCH_ACTIVITY':
-            return {...state, activity: action.payload, loading: false}
         default:
         return state;
     }
