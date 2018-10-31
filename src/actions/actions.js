@@ -15,7 +15,12 @@ export function fetchWeather(zip) {
 // export function fetchForecast(zip) {
 //     return (dispatch) => {
 //         dispatch({type: 'LOADING_DATA'});
-//         return fetch(`/api/forecast/${zip}`)
+//         return fetch(`/api/forecast/${zip}`, {
+//             headers:{
+//                 'Content-Type': 'application/json',
+//                 'Accept': 'application/json'
+//                 }
+//             })
 //             .then(response => response.json())
 //             .then(forecast => dispatch({type: 'FETCH_FORECAST', payload: forecast.list}))
 //     }
