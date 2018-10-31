@@ -20,8 +20,11 @@ html, body {
 
 /* --- Welcome Page Styles --- */
 body {
-  /* background: url(./images/dog.jpeg) no-repeat center top; */
-  background-color: rgb(52, 207, 142);
+  /* background-color: rgb(52, 207, 142); */
+  background: url(./images/weather.jpeg) repeat center;
+  background-repeat: no-repeat;
+  background-color: #143C96;
+  background-position: center top;
   color: #333;
   font-family: Sans-Serif;
   /* line-height: 18px; */
@@ -29,8 +32,12 @@ body {
 
 .wrapper {
   border: solid;
-  /* background: #fff; */
-  background: url(./images/dog.jpeg) no-repeat center;
+  background-color: #F7FBFE;
+  /* background: url(./images/dog.jpeg) no-repeat center bottom; */
+  background-image: url("./images/dog.jpeg");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+
   -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
   box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -63,6 +70,8 @@ p {
 
 .center {
   text-align: center;
+  /* float: center;
+  margin: auto; */
 }
 .main {
   overflow: hidden;
@@ -130,7 +139,7 @@ footer.branding {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 33%;
+  width: 85%;
   margin: auto;
 }
 
@@ -139,22 +148,22 @@ footer.branding {
   }
 
 /* --- Table Styles --- */
-#table {
+table {
   margin: 0 0 20px;
   border: solid;
 }
 
-#table th, td {
+table th, td {
   padding: 10px;
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
 
-#table tr:nth-child(odd) {
+table tr:nth-child(odd) {
   background: #efefef;
 }
 
-#table th {
+table th {
   background: #555;
   color: white;
 }
