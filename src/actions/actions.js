@@ -70,3 +70,7 @@ export function fetchConditions() {
 
     }
 }
+
+export function updateActivity(){
+    
+}
