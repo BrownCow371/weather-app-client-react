@@ -1,12 +1,6 @@
-import React, {Component} from 'react';
-import WeatherSearch from '../containers/WeatherSearch.js';
-// import { Link } from 'react-router-dom';
-
+import React from 'react';
 
 const Greeting = () => {
-// <Link to = "/weather" exact>Click Here to Search the Weather!</Link>  
-//                 <p className="center">Use the NavBar above to get started!</p>
-
 
          return(
             <div>
