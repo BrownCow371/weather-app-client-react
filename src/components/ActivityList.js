@@ -8,6 +8,7 @@ const ActivityList = (props) => {
             <table>
                 <tbody>
                 <tr>
+                    <th>Id</th>
                     <th>Desc</th>
                     <th>Min Temp</th>
                     <th>Max Temp</th>
@@ -19,6 +20,7 @@ const ActivityList = (props) => {
                 </tr>
                 {props.activities.map((activity) => (
                     <tr key={activity.id}>
+                        <td>{activity.id} </td>
                         <td>{activity.desc} </td>
                         <td>{activity.min_temp} </td>
                         <td>{activity.max_temp} </td>
