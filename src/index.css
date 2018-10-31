@@ -1,12 +1,3 @@
-/* body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -26,9 +17,8 @@ body {
   background-color: #143C96;
   background-position: center top;
   color: #333;
-  /* color: #143C96; */
+  /* color: #143C96; if I want text and borders blue*/
   font-family: Sans-Serif;
-  /* line-height: 18px; */
 }
 
 .wrapper {
@@ -72,14 +62,6 @@ p {
   text-align: center;
   float: center;
 }
-/* .main {
-  overflow: hidden;
-} */
-
-/* .content {
-  float: left;
-  width: 60%; /* 480px / 800px */
- /* } */ 
 
 .sidebar {
   background: #eee;
@@ -89,29 +71,16 @@ p {
   width: 30%; /* 240px / 800px */
 }
 
-/* .sidebar ul {
-  font-size: 14px;
-} */
-
-/* .branding {
-  clear: both;
-} */
 
 footer.branding {
   border-top: 2px solid #ccc;
   margin-top: 20px;
   padding-top: 20px;
-  /* color: rgb(52, 207, 142); */
   color: white;
   font: bold;
 }
 
-/* --- Signup/Login Page Styles --- */
-.signup, .login, {
-  border: solid;
-  width: 33%;
-  padding: 2em;
-  }
+/* --- Page Box Styles --- */
 
 .weather-box {
   border: solid;
@@ -157,9 +126,6 @@ input {
   line-height: 18px;
   }
 
-.warning {
-  color: red;
-  }
 
 /* --- Table Styles --- */
 table {
@@ -198,8 +164,4 @@ table th {
   content: "";
   clear: both;
   display: table;
-}
-
-.field_with_errors {
-  border: 2px solid red;
 }
