@@ -6,6 +6,7 @@ const ActivityList = (props) => {
     return (
         <div className="activities-box">
             <table>
+                <tbody>
                 <tr>
                     <th>Desc</th>
                     <th>Min Temp</th>
@@ -24,13 +25,14 @@ const ActivityList = (props) => {
                         <td>{activity.max_wind_speed} </td>
                         
                         <td>{activity.conditions.map((condition) => (
-                            <span>{condition.desc}, </span>
+                            <span key={condition.id}>{condition.desc}, </span>
                         ))}</td>
                         <td> <Link key={activity.id} to ={"/activities/" + activity.id + "/edit"}>Edit</Link></td>
                         <td> Remove Link </td>
 
                     </tr>
                 ))}
+                </tbody>
             </table>
             <button className="big-button" > Add Activity </button>          
 
