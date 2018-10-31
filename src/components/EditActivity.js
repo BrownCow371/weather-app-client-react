@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchActivity, updateActivity} from '../actions/actions.js';
+import {updateActivity} from '../actions/actions.js';
 
 class EditActivity extends Component {
     constructor(props){
@@ -20,9 +20,11 @@ class EditActivity extends Component {
 
     componentDidMount(){
         let id = this.props.match.params.id;
+
         fetch(`/api/activities/${id}`)
             .then(response => response.json())
             .then(activity => this.setState({activity: activity}))
+
         fetch(`/api/conditions`)
             .then(response => response.json())
             .then(conditions => this.setState({conditions: conditions}))
@@ -35,10 +37,22 @@ class EditActivity extends Component {
         })
     }
 
+    handleCheckboxChange = (event) => {
+        // this.setState({
+        //     activity: [...this.state.activity,
+        //         conditions: []
+
+        //     ]
+        // })
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.updateActivity();
+
     }
+
+    
  
 
     render(){
@@ -53,6 +67,7 @@ class EditActivity extends Component {
                     <label><strong>Acceptable Conditions: </strong></label>
                         {this.state.conditions.map(condition => (
                             <label><input key={condition.id} 
+                            onChange={this.handleCheckboxChange}
                             type="checkbox" 
                             value={condition.id} 
                             name="condition" 
@@ -66,8 +81,5 @@ class EditActivity extends Component {
     }
 }
 
-// const mapStateToProps = (state) => {
-//     return {activity: state.activity}
-//   }
 
 export default connect(null, {updateActivity})(EditActivity)
