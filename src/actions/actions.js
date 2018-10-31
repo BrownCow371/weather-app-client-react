@@ -29,3 +29,13 @@ export function fetchActivities() {
 
     }
 }
+
+export function fetchActivity(id) {
+    return (dispatch) => {
+       dispatch({type: 'LOADING_DATA'});
+       return fetch(`/api/activities/${id}`)
+            .then(response => response.json())
+            .then(activity => dispatch({type: 'FETCH_ACTIVITY', payload: activity}))
+
+    }
+}
