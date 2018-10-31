@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchWeather, fetchForecast} from '../actions/actions.js';
+import {fetchWeather} from '../actions/actions.js';
 import OneDayWeather from '../components/OneDayWeather.js';
 
 
@@ -45,8 +45,8 @@ class WeatherSearch extends Component {
     }
 }
 
-const mapStoreToProps = (state) => {
+const mapStateToProps = (state) => {
     return {weather: state.weather}
   }
 
-export default connect(mapStoreToProps,{fetchWeather})(WeatherSearch)
+export default connect(mapStateToProps,{fetchWeather})(WeatherSearch)
