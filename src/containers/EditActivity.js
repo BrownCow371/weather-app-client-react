@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 import {updateActivity} from '../actions/actions.js';
 import ActivityForm from '../components/activity/ActivityForm.js';
 import {handleActivityChange, handleConditionSelection} from '../components/activity/changeFunctions.js'
@@ -8,6 +9,7 @@ class EditActivity extends Component {
     constructor(props){
         super(props)
         this.state = {
+            redirect: false,
             activity: {
                 id: '',
                 desc: '',
@@ -24,8 +26,12 @@ class EditActivity extends Component {
     componentDidMount(){
         let id = this.props.match.params.id;
         let activity = this.props.activities.find(activity => activity.id == id);
-        this.setState({activity: activity})
-
+        if (activity) {
+            this.setState({activity: activity}) 
+        } else {
+            this.setState({redirect: true})
+        }
+        
         // fetch(`/api/activities/${id}`)
         //     .then(response => response.json())
         //     .then(activity => this.setState({activity: activity}))
@@ -39,21 +45,24 @@ class EditActivity extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.updateActivity(this.state)
-            .then()
     }
 
     render(){
-        return (
-            <div className="activity-box">
-                <ActivityForm 
-                    activity={this.state.activity}
-                    conditions={this.props.conditions} 
-                    handleSubmit={this.handleSubmit}
-                    handleChange={this.handleActivityChange}
-                    handleCheckbox={this.handleConditionSelection}
-                    title={"Edit Activity ID: " + this.state.activity.id +" Form"}/>
-            </div>
-       )
+        if (this.state.redirect) {
+            return <Redirect to='/'/>
+        } else {
+            return (
+                <div className="activity-box">
+                    <ActivityForm 
+                        activity={this.state.activity}
+                        conditions={this.props.conditions} 
+                        handleSubmit={this.handleSubmit}
+                        handleChange={this.handleActivityChange}
+                        handleCheckbox={this.handleConditionSelection}
+                        title={"Edit Activity ID: " + this.state.activity.id +" Form"}/>
+                </div>
+        )
+      }   
     }
 }
 
