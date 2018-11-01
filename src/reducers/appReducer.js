@@ -22,6 +22,9 @@ export default function appReducer(
             return {...state, activities: action.payload, loading: false}
         case 'FETCH_CONDITIONS':
             return {...state, conditions: action.payload, loading: false}
+        case 'UPDATE_ACTIVITY':
+            return {...state, activities: state.activities.map(act => (
+                act.id === action.payload.id ? action.payload : act)) }
         default:
         return state;
     }
