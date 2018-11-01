@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchActivities} from '../actions/actions.js';
-import ActivityList from '../components/ActivityList.js'
+// import {fetchActivities} from '../actions/actions.js';
+import ActivityList from '../components/activity/ActivityList.js'
 
 class Activities extends Component {
 
-    componentDidMount(){
-        this.props.fetchActivities();
-    }
+    // componentDidMount(){
+    //     this.props.fetchActivities();
+    // }
 
     render(){
         return (
@@ -23,4 +23,4 @@ const mapStateToProps = (state) => {
     return {activities: state.activities}
   }
 
-export default connect(mapStateToProps, {fetchActivities})(Activities)
+export default connect(mapStateToProps)(Activities)

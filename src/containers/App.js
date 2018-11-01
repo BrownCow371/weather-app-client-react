@@ -1,24 +1,31 @@
 import React, { Component } from 'react';
-import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import {connect} from "react-redux";
 
 // components
-import NavBar from '../components/NavBar.js'
-import Footer from '../components/Footer.js'
-import FiveDayWeather from '../components/FiveDayWeather.js';
-import Greeting from '../components/Greeting.js';
-import EditActivity from '../components/EditActivity.js'
+// import FiveDayWeather from '../components/FiveDayWeather.js';
+import NavBar from '../components/static/NavBar.js'
+import Footer from '../components/static/Footer.js'
+import Greeting from '../components/static/Greeting.js';
 
 // other containers
 import Activities from './Activities.js';
+import EditActivity from './EditActivity.js'
 import WeatherSearch from './WeatherSearch.js';
+
+// actions
+import {fetchActivities, fetchConditions} from '../actions/actions.js'
 
 class App extends Component {
 
+  componentDidMount(){
+    this.props.fetchActivities();
+    this.props.fetchConditions();
+  }
 
    render() {
 
-    // <Route exact path='/activities/:id/edit' render={routerProps => <EditActivity {...routerProps} /> } />
+    // <Route exact path='/forecast' component={FiveDayWeather} />
 
     return (
       <Router>
@@ -26,7 +33,6 @@ class App extends Component {
               <NavBar />
               <Route path = "/" component={Greeting}/>
               <Route exact path='/weather' component={WeatherSearch} />
-              <Route exact path='/forecast' component={FiveDayWeather} />
               <Route exact path='/activities' component={Activities} />
               <Route exact path='/activities/:id/edit' component={EditActivity} />
               <Footer />
@@ -36,4 +42,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, {fetchActivities, fetchConditions})(App);
