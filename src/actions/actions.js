@@ -56,20 +56,20 @@ export function fetchActivities() {
 //     }
 // }
 
-// export function fetchConditions() {
-//     return (dispatch) => {
-//        dispatch({type: 'LOADING_DATA'});
-//        return fetch('/api/conditions/', {
-//             headers:{
-//             'Content-Type': 'application/json',
-//             'Accept': 'application/json'
-//             }
-//         })
-//             .then(response => response.json())
-//             .then(conditions => dispatch({type: 'FETCH_CONDITIONS', payload: conditions}))
+export function fetchConditions() {
+    return (dispatch) => {
+       dispatch({type: 'LOADING_DATA'});
+       return fetch('/api/conditions/', {
+            headers:{
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(conditions => dispatch({type: 'FETCH_CONDITIONS', payload: conditions}))
 
-//     }
-// }
+    }
+}
 
 export function updateActivity(){
 
