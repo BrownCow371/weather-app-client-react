@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchWeather} from '../actions/actions.js';
+import {fetchWeather, fetchSuggestion} from '../actions/actions.js';
 import OneDayWeather from '../components/weather/OneDayWeather.js';
 
 
@@ -11,6 +11,7 @@ class WeatherSearch extends Component {
         this.state ={
             render: false,
             zip: '',
+            suggestion: {}
         }
     }
 
@@ -23,6 +24,11 @@ class WeatherSearch extends Component {
         this.props.fetchWeather(this.state.zip)
         .then(data => this.setState({zip: ''}))
                 
+    }
+
+    handleSuggestionClick = (zip) => {
+        this.props.fetchSuggestion(zip).then(action => (
+            this.setState({suggestion: action.payload})))
     }
 
     render(){
@@ -39,9 +45,11 @@ class WeatherSearch extends Component {
                 </form>
                 
                 <p><strong>(Only 5 digit US Zipcodes accepted.) </strong></p>
-                <OneDayWeather loading={this.props.loading} weather={this.props.weather}/>
-                          
-
+                <OneDayWeather 
+                    loading={this.props.loading} 
+                    weather={this.props.weather}
+                    handleClick={this.handleSuggestionClick}
+                    suggestion={this.state.suggestion}/>
             </>
         )
     }
@@ -52,4 +60,4 @@ const mapStateToProps = (state) => {
             loading: state.loading}
   }
 
-export default connect(mapStateToProps,{fetchWeather})(WeatherSearch)
+export default connect(mapStateToProps,{fetchWeather, fetchSuggestion})(WeatherSearch)
