@@ -3,13 +3,15 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {connect} from "react-redux";
 
 // components
-// import FiveDayWeather from '../components/FiveDayWeather.js';
+  // save for later - import FiveDayWeather from '../components/FiveDayWeather.js';
 import NavBar from '../components/static/NavBar.js'
 import Footer from '../components/static/Footer.js'
 import Greeting from '../components/static/Greeting.js';
 
 // other containers
 import Activities from './Activities.js';
+import NewActivity from './NewActivity.js'
+import ShowActivity from './ShowActivity.js'
 import EditActivity from './EditActivity.js'
 import WeatherSearch from './WeatherSearch.js';
 
@@ -34,6 +36,8 @@ class App extends Component {
               <Route path = "/" component={Greeting}/>
               <Route exact path='/weather' component={WeatherSearch} />
               <Route exact path='/activities' component={Activities} />
+              <Route exact path='/activities/new' component={NewActivity} />
+              <Route exact path='/activities/:id' component={ShowActivity} />
               <Route exact path='/activities/:id/edit' component={EditActivity} />
               <Footer />
         </div>

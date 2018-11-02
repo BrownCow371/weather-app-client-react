@@ -9,7 +9,7 @@ class EditActivity extends Component {
     constructor(props){
         super(props)
         this.state = {
-            redirect: false,
+            render: "EDIT_FORM",
             activity: {
                 id: '',
                 desc: '',
@@ -29,7 +29,7 @@ class EditActivity extends Component {
         if (activity) {
             this.setState({activity: activity}) 
         } else {
-            this.setState({redirect: true})
+            this.setState({render: 'REDIRECT'})
         }
         
         // fetch(`/api/activities/${id}`)
@@ -45,25 +45,30 @@ class EditActivity extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.updateActivity(this.state)
+        this.setState({render: 'REDIRECT_SHOW'})
     }
 
     render(){
-        if (this.state.redirect) {
-            return <Redirect to='/'/>
-        } else {
-            return (
-                <div className="activity-box">
-                    <ActivityForm 
-                        activity={this.state.activity}
-                        conditions={this.props.conditions} 
-                        handleSubmit={this.handleSubmit}
-                        handleChange={this.handleActivityChange}
-                        handleCheckbox={this.handleConditionSelection}
-                        title={"Edit Activity ID: " + this.state.activity.id +" Form"}/>
-                </div>
-        )
-      }   
-    }
+        switch(this.state.render){
+            case 'REDIRECT_SHOW':
+                return <Redirect to={`/activities/${this.state.activity.id}`}/>
+            case 'REDIRECT':
+                return <Redirect to="/activities"/>
+            default:
+                return (
+                    <div className="activity-box">
+                        <ActivityForm 
+                            activity={this.state.activity}
+                            conditions={this.props.conditions} 
+                            handleSubmit={this.handleSubmit}
+                            handleChange={this.handleActivityChange}
+                            handleCheckbox={this.handleConditionSelection}
+                            title={`Edit Activity ID: ${this.state.activity.id} Form`}/>
+                    </div>
+            )
+      } 
+    }  
+     
 }
 
 const mapStateToProps= (state) => {
