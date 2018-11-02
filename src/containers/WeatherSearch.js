@@ -11,7 +11,6 @@ class WeatherSearch extends Component {
         this.state ={
             render: false,
             zip: '',
-            suggestion: {}
         }
     }
 
@@ -27,8 +26,7 @@ class WeatherSearch extends Component {
     }
 
     handleSuggestionClick = (zip) => {
-        this.props.fetchSuggestion(zip).then(action => (
-            this.setState({suggestion: action.payload})))
+        this.props.fetchSuggestion(zip)
     }
 
     render(){
@@ -49,7 +47,7 @@ class WeatherSearch extends Component {
                     loading={this.props.loading} 
                     weather={this.props.weather}
                     handleClick={this.handleSuggestionClick}
-                    suggestion={this.state.suggestion}/>
+                    suggestion={this.props.suggestion}/>
             </>
         )
     }
@@ -57,7 +55,8 @@ class WeatherSearch extends Component {
 
 const mapStateToProps = (state) => {
     return {weather: state.weather,
-            loading: state.loading}
+            loading: state.loading,
+            suggestion: state.suggestion}
   }
 
 export default connect(mapStateToProps,{fetchWeather, fetchSuggestion})(WeatherSearch)
