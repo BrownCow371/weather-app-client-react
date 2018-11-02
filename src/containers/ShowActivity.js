@@ -23,17 +23,16 @@ class ShowActivity extends Component {
             return <Redirect to="/"/>
         } else {
             let id = this.props.match.params.id;
-            const activity = this.props.activities.find(activity => activity.id == id)
+            const activity = this.props.activities.find(activity => parseInt(activity.id) === parseInt(id))
             return(
-                <ActivityBox loading={this.props.loading} activity={activity}/>
+                <ActivityBox activity={activity}/>
             )          
         }
     }
 }
 
 const mapStateToProps = (state) => {
-    return {activities: state.activities,
-            loading: state.loading}
+    return {activities: state.activities}
   }
 
 export default connect(mapStateToProps)(ShowActivity)
