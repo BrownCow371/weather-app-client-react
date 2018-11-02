@@ -33,14 +33,14 @@ const ActivityForm = (props) => {
             <label><strong>Acceptable Conditions: </strong></label>
                 <div className="checkbox"> 
                     {props.conditions.map(condition => (
-                        <label key ={condition.id}> {condition.desc}
+                        <label key ={condition.id}> 
                             <input 
                                 type="checkbox"
                                 name="condition"
                                 value={condition.id}
                                 onChange={props.handleCheckbox}
                                 checked={props.activity.conditions.findIndex(c=> c.id == condition.id) > -1}
-                            />
+                            /> {condition.desc}
                         </label>
                     ))}
                 </div>
