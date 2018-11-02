@@ -9,6 +9,7 @@ class WeatherSearch extends Component {
     constructor(props){
         super(props);
         this.state ={
+            render: false,
             zip: '',
         }
     }
@@ -20,11 +21,11 @@ class WeatherSearch extends Component {
     onSubmitHandler = (event) => {
         event.preventDefault();
         this.props.fetchWeather(this.state.zip)
-        this.setState({zip: ''})        
+        .then(data => this.setState({zip: ''}))
+                
     }
 
     render(){
-        console.log("weather search", this.props.weather)
         const isEnabled = this.state.zip.match(/\b\d{5}\b/)
 
         return(
@@ -38,7 +39,8 @@ class WeatherSearch extends Component {
                 </form>
                 
                 <p><strong>(Only 5 digit US Zipcodes accepted.) </strong></p>
-                <OneDayWeather weather={this.props.weather}/>
+                <OneDayWeather loading={this.props.loading} weather={this.props.weather}/>
+                          
 
             </>
         )
@@ -46,7 +48,8 @@ class WeatherSearch extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {weather: state.weather}
+    return {weather: state.weather,
+            loading: state.loading}
   }
 
 export default connect(mapStateToProps,{fetchWeather})(WeatherSearch)
