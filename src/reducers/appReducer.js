@@ -5,6 +5,7 @@ export default function appReducer(
         weather: {},
         conditions: [],
         activities: [],
+        response: ''
        }, 
     action){
 
@@ -24,6 +25,8 @@ export default function appReducer(
                 (act.id === action.payload.id ? action.payload : act)), loading: false }
         case 'ADD_ACTIVITY':
             return {...state, activities: [...state.activities, action.payload], loading: false }
+        case 'REMOVE_ACTIVITY':
+            return {...state, activities: state.activities.filter(act => act.id !== action.payload.id), loading: false }
         default:
             return state;
     }
