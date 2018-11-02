@@ -76,9 +76,7 @@ export function updateActivity(requestData){
         dispatch({type: 'LOADING_DATA'});
 
         requestData.activity.condition_ids = requestData.activity.conditions.map(c => c.id);
-        console.log("updated req", requestData)
         return fetch(`/api/activities/${requestData.activity.id}`, {
-            // return fetch(`/api/activities/`, {
             method: "PUT",
             headers:{
                 'Content-Type': 'application/json',
@@ -88,5 +86,24 @@ export function updateActivity(requestData){
         })
         .then(response =>response.json())
         .then(activity => dispatch({type: 'UPDATE_ACTIVITY', payload: activity}))
+    }
+}
+
+export function addActivity(requestData){
+    return (dispatch) => {
+    dispatch({type: 'LOADING_DATA'});
+
+    requestData.activity.condition_ids = requestData.activity.conditions.map(c => c.id);
+    
+    return fetch(`/api/activities`, {
+        method: "POST",
+        headers:{
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+            },
+        body: JSON.stringify(requestData),
+    })
+    .then(response =>response.json())
+    .then(activity => dispatch({type: 'ADD_ACTIVITY', payload: activity}))
     }
 }
