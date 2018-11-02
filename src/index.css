@@ -11,13 +11,10 @@ html, body {
 
 /* --- Page Styles --- */
 body {
-  /* background-color: rgb(52, 207, 142); */
-  background: url(./images/weather.jpeg) repeat center;
-  background-repeat: no-repeat;
   background-color: #143C96;
-  background-position: center top;
+  background: url("./images/weather.jpeg") no-repeat center center fixed;
+  background-size: cover;
   color: #333;
-  /* color: #143C96; if I want text and borders blue*/
   font-family: Sans-Serif;
 }
 
@@ -117,7 +114,7 @@ footer.branding {
   flex-direction: column;
   /* align-items: left;
   justify-content: left; */
-  width: 45%;
+  width: 40%;
   margin: auto;
   line-height: 2em;
   }
