@@ -123,3 +123,18 @@ export function removeActivity(id){
         .then(activity => dispatch({type: 'REMOVE_ACTIVITY', payload: activity}))
         }
 }
+
+export function fetchSuggestion(zip){
+    return(dispatch) => {
+        dispatch({type: 'LOADING_DATA'});
+        return fetch(`api/weather/${zip}/suggestion`, {
+            headers:{
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+                }
+        })
+        .then(response => response.json())
+        .then(activity => dispatch({type: 'SUGGEST_ACTIVITY', payload: activity}))
+        }
+}
+
