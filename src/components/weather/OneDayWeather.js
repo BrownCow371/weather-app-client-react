@@ -1,8 +1,11 @@
 import React from 'react';
+import Suggestion from './Suggestion.js';
 
-const OneDayWeather = ({weather, loading}) => {
+const OneDayWeather = ({weather, loading, handleClick, suggestion}) => {
 
-
+        const handleSuggestionClick = () => {
+            handleClick(weather.zip);
+        }
         //Determine if weather has been fetched yet.
         function renderThis(){
             return !!weather.zip
@@ -19,6 +22,8 @@ const OneDayWeather = ({weather, loading}) => {
                         <p><strong>Humidity:</strong> {weather.humidity}</p>
                         <p><strong>Wind Speed:</strong> {weather.wind_speed}</p>
                         <p className="center"><img src={`http://openweathermap.org/img/w/${weather.icon}.png`} alt="weather icon"/></p>
+                        <button className="big-button" onClick={handleSuggestionClick}>Get Activity Suggestion</button>
+                        <Suggestion suggestion={suggestion}/>
                     </div> 
                 </>
             )
