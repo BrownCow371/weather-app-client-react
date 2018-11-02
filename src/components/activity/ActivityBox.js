@@ -6,13 +6,7 @@ const ActivityBox = ({activity, loading}) => {
         return !!activity
     }
 
-    if (loading) {
-        return (
-            <div className="activity-box">
-                <h3> PLEASE HOLD ....... LOADING DATA</h3>
-            </div>
-        )
-    } else if (renderThis()) {
+    if  (renderThis()) {
         return (
             <div className="activity-box">
                 <h2>Activity Detail ID: {activity.id}</h2>
