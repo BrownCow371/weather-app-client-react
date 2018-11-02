@@ -5,7 +5,8 @@ export default function appReducer(
         weather: {},
         conditions: [],
         activities: [],
-        response: ''
+        response: '',
+        suggestion: {}
        }, 
     action){
 
@@ -27,6 +28,8 @@ export default function appReducer(
             return {...state, activities: [...state.activities, action.payload], loading: false }
         case 'REMOVE_ACTIVITY':
             return {...state, activities: state.activities.filter(act => act.id !== action.payload.id), loading: false }
+        case 'SUGGEST_ACTIVITY':
+                return {...state, suggestion: action.payload, loading: false}
         default:
             return state;
     }
