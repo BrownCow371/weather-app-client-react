@@ -7,8 +7,6 @@ const ActivityForm = ({formErrors, title, activity, conditions, handleChange, ha
             //  debugger;  
     return (
     <>
-        
-        <ActivityFormErrors formErrors={formErrors}/>
         <form onSubmit={handleSubmit}> 
             <h2>{title}</h2>
             <label><strong>Description: </strong></label>
@@ -55,6 +53,7 @@ const ActivityForm = ({formErrors, title, activity, conditions, handleChange, ha
                 </div>
             <input className="big-button center" type="submit" disabled={isDisabled}/>
         </form>
+        <ActivityFormErrors formErrors={formErrors}/>
     </>
     )
 }
