@@ -76,6 +76,14 @@ footer.branding {
   color: white;
   font: bold;
 }
+.warning {
+  color: red;
+  text-align: center;
+}
+.form-errors {
+  color: red;
+  font-weight: 700;
+}
 
 /* --- Page Box Styles --- */
 
