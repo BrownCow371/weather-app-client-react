@@ -34,8 +34,6 @@ class NewActivity extends Component {
         switch(this.state.render){
             case "REDIRECT_SHOW":
                 return <Redirect to={`/activities/${this.state.id}`} />
-            case "PRETEND":
-                return null
             case "NEW":
                 return (
                     <div className="activity-box">
