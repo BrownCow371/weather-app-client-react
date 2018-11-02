@@ -3,13 +3,11 @@ import { Link } from 'react-router-dom';
 
 const ActivityList = (props) => {
 
-    if (props.loading) {
-        return (
-            <div className="activity-box">
-                <h3> PLEASE HOLD ....... LOADING DATA</h3>
-            </div>
-        )
-    } else {
+    const handleClickRemove = (id) => {
+        props.handleClickRemove(id);
+        console.log("ID", id);
+    }
+
         return (
             <div className="activities-box">
                 <table>
@@ -37,7 +35,7 @@ const ActivityList = (props) => {
                                 <span key={condition.id}>{condition.desc}, </span>
                             ))}</td>
                             <td> <Link key={activity.id} to ={`/activities/${activity.id}/edit`}>Edit</Link></td>
-                            <td> Remove Link </td>
+                            <td> <button onClick={()=>handleClickRemove(activity.id)}>REMOVE</button> </td>
 
                         </tr>
                     ))}
@@ -47,7 +45,7 @@ const ActivityList = (props) => {
 
             </div>
         )
-    }
+    
 }
 
 export default ActivityList;
