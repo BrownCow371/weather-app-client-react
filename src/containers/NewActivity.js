@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {addActivity} from '../actions/actions.js';
 import ActivityForm from '../components/activity/ActivityForm.js';
-import {handleActivityChange, handleConditionSelection} from '../components/activity/changeFunctions.js'
+import Loading from '../components/static/Loading.js'
+import {handleActivityChange, handleConditionSelection, validateField} from '../components/activity/changeFunctions.js'
 
 class NewActivity extends Component {
     constructor(props){
@@ -16,8 +17,14 @@ class NewActivity extends Component {
                 max_temp: '',
                 max_wind_speed: '',
                 conditions: []
-            }
+            },
+            formErrors: {
+                desc: '', 
+                max_temp: '', 
+                min_temp: '', 
+                max_wind_speed: ''},
         }
+        this.validateField = validateField.bind(this)
         this.handleActivityChange = handleActivityChange.bind(this);
         this.handleConditionSelection = handleConditionSelection.bind(this)
     }
@@ -31,29 +38,35 @@ class NewActivity extends Component {
     }
 
     render(){
-        switch(this.state.render){
-            case "REDIRECT_SHOW":
-                return <Redirect to={`/activities/${this.state.id}`} />
-            case "NEW":
-                return (
-                    <div className="activity-box">
-                        <ActivityForm 
-                            activity={this.state.activity}
-                            conditions={this.props.conditions} 
-                            handleSubmit={this.handleSubmit}
-                            handleChange={this.handleActivityChange}
-                            handleCheckbox={this.handleConditionSelection}
-                            title={"Add New Activity Form"}/>
-                    </div>
-                )
-            default:
-                return null
-                
+        if (this.props.loading){
+            return <Loading />
+        } else {
+            switch(this.state.render){
+                case "REDIRECT_SHOW":
+                    return <Redirect to={`/activities/${this.state.id}`} />
+                case "NEW":
+                    return (
+                        <div className="activity-box">
+                            <ActivityForm 
+                                formErrors={this.state.formErrors}
+                                activity={this.state.activity}
+                                conditions={this.props.conditions} 
+                                handleSubmit={this.handleSubmit}
+                                handleChange={this.handleActivityChange}
+                                handleCheckbox={this.handleConditionSelection}
+                                title={"Add New Activity Form"}/>
+                        </div>
+                    )
+                default:
+                    return null
+                    
+            }
         }
     }
 }
 const mapStateToProps= (state) => {
-    return {conditions: state.conditions}
+    return {conditions: state.conditions,
+            loading: state.loading}
 }
 
 export default connect(mapStateToProps, {addActivity})(NewActivity)
