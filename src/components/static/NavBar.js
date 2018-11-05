@@ -10,6 +10,7 @@ const NavBar = () => {
             <button className="big-button" ><NavLink to ="/" exact>Home</NavLink> </button>
             <button className="big-button"><NavLink to ="/weather" exact>Weather Search</NavLink> </button> 
             <button className="big-button"><NavLink to ="/activities" exact>Activity List</NavLink> </button> 
+            <button className="big-button"><NavLink to ="/activities/new" exact>New Activity</NavLink> </button> 
         </div>
     )
 }
