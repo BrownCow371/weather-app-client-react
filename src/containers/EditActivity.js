@@ -30,10 +30,28 @@ class EditActivity extends Component {
         this.handleConditionSelection = handleConditionSelection.bind(this)
     }
 
+    swapNull = (activity) => {
+        // swap out null values for empty strings to appease controlled form
+        if (activity.max_wind_speed === null){
+            activity.max_wind_speed= ''
+        }
+        
+        if (activity.max_temp === null){
+            activity.max_temp = ''
+        }
+
+        if (activity.min_temp ===null){
+            activity.min_temp = ''
+        }
+    }
+
     componentDidMount(){
         let id = this.props.match.params.id;
         let activity = this.props.activities.find(activity => parseInt(activity.id) === parseInt(id));
         if (activity) {
+            
+            this.swapNull(activity)
+
             this.setState({activity: activity}) 
         } else {
             this.setState({redirect: 'REDIRECT'})

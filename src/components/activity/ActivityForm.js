@@ -3,7 +3,7 @@ import ActivityFormErrors from './ActivityFormErrors.js'
 
 const ActivityForm = ({formErrors, title, activity, conditions, handleChange, handleCheckbox, handleSubmit}) => {
 
-    let isDisabled = ((Object.keys(formErrors).find(field => formErrors[field].length > 0)) || activity.desc === "")
+    let isDisabled = ((Object.keys(formErrors).find(field => formErrors[field].length > 0)) || activity.desc === "")    
     
     return (
     <>
