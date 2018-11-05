@@ -43,7 +43,6 @@ class WeatherSearch extends Component {
                 <input type="submit"  />
                 </form>
                 <p><strong>(Only 5 digit US Zipcodes accepted.) </strong></p>
-                <h3 className="warning">  </h3>
                 <OneDayWeather 
                     loading={this.props.loading} 
                     weather={this.props.weather}

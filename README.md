@@ -8,7 +8,7 @@ This application allows the user to fetch weather for a zipcode from the OpenWea
 
 Clone down this repository and the sister repository at https://github.com/BrownCow371/weather-app-rails-api. Run bundle, rake db:migrate and rake db:seed from your terminal for the rails directory. Also run npm install from the terminal in the react directory. Then, from the rails directory, in the terminal run 'rake start' to launch both servers. The application will be running on your localhost:3000 port and the API will be running on localhost:3001. 
 
-In order for the weather portion of the application to work, you will need to either get your own API key from the OpenWeatherMap API (https://openweathermap.org/appid) and put it in an .env file at the root of the rails API repository with an APPID=YOURKEY (make sure there are no spaces or new lines after the key). Or you can use the sample data from the API by opening the searches_controller file in the Rails API repository and uncommenting the sample fetch in the current_weather action and commenting out the live api call code noted there. Note that the sample data is provided in degrees Kelvin. 
+In order for the weather portion of the application to work, you will need to either get your own API key from the OpenWeatherMap API (https://openweathermap.org/appid) and put it in an .env file at the root of the rails API repository with an APPID=YOURKEY (make sure there are no spaces or new lines after the key). Or you can use the sample data from the API by opening the searches_controller file in the Rails API repository and uncommenting the sample fetch in the call_weather_api method and commenting out the live api call code noted there. Note that the sample data is provided in degrees Kelvin. 
 
 
 ## Contributing
