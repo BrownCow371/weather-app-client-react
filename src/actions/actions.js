@@ -8,8 +8,8 @@ export function fetchWeather(zip) {
             }
           })
             .then(checkStatus)
-            .then(json => dispatch({type: 'FETCH_WEATHER', payload: json}))
-            .catch(err => {err.json().then(message  => dispatch({type: 'ERROR_MESSAGE', payload: message}))})
+            .then(weather => dispatch({type: 'FETCH_WEATHER', payload: weather}))
+            .catch(err => {err.json().then(message  => dispatch({type: 'WEATHER_ERROR', payload: message}))})
     }
 }
 //   Future Functionality
@@ -36,9 +36,9 @@ export function fetchActivities() {
             'Accept': 'application/json'
             }
         })
-            .then(response => response.json())
-            .then(activities => dispatch({type: 'FETCH_ACTIVITIES', payload: activities}))
-
+        .then(checkStatus)
+        .then(activities => dispatch({type: 'FETCH_ACTIVITIES', payload: activities}))
+        .catch(err => {err.json().then(message  => dispatch({type: 'ACTIVITY_ERROR', payload: message}))})
     }
 }
 
@@ -66,28 +66,30 @@ export function fetchConditions() {
             'Accept': 'application/json'
             }
         })
-            .then(response => response.json())
-            .then(conditions => dispatch({type: 'FETCH_CONDITIONS', payload: conditions}))
-
+        .then(checkStatus)
+        .then(conditions => dispatch({type: 'FETCH_CONDITIONS', payload: conditions}))
+        .catch(err => {err.json().then(message  => dispatch({type: 'CONDITION_ERROR', payload: message}))})
     }
 }
 
 export function updateActivity(requestData){
-        return (dispatch) => {
-            dispatch({type: 'LOADING_DATA'});
+    return (dispatch) => {
+        dispatch({type: 'LOADING_DATA'});
 
-            requestData.activity.condition_ids = requestData.activity.conditions.map(c => c.id);
-            return fetch(`/api/activities/${requestData.activity.id}`, {
-                method: "PUT",
-                headers:{
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                    },
-                body: JSON.stringify(requestData),
-            })
-            .then(response =>response.json())
-            .then(activity => dispatch({type: 'UPDATE_ACTIVITY', payload: activity}))
-        }
+        requestData.activity.condition_ids = requestData.activity.conditions.map(c => c.id);
+
+        return fetch(`/api/activities/${requestData.activity.id}`, {
+            method: "PUT",
+            headers:{
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+                },
+            body: JSON.stringify(requestData),
+        })
+        .then(checkStatus)
+        .then(activity => dispatch({type: 'UPDATE_ACTIVITY', payload: activity}))
+        .catch(err => {err.json().then(message  => dispatch({type: 'ACTIVITY_ERROR', payload: message}))})
+    }
 }
 
 export function addActivity(requestData){
@@ -104,9 +106,10 @@ export function addActivity(requestData){
                 },
             body: JSON.stringify(requestData),
         })
-        .then(response =>response.json())
+        .then(checkStatus)
         .then(activity => dispatch({type: 'ADD_ACTIVITY', payload: activity}))
-        }
+        .catch(err => {err.json().then(message  => dispatch({type: 'ACTIVITY_ERROR', payload: message}))})
+    }
 }
 
 export function removeActivity(id){
@@ -120,9 +123,10 @@ export function removeActivity(id){
                 'Accept': 'application/json'
                 }
         })
-        .then(response =>response.json())
+        .then(checkStatus)
         .then(activity => dispatch({type: 'REMOVE_ACTIVITY', payload: activity}))
-        }
+        .catch(err => {err.json().then(message  => dispatch({type: 'ACTIVITY_ERROR', payload: message}))})
+    }
 }
 
 export function fetchSuggestion(zip){
@@ -134,9 +138,10 @@ export function fetchSuggestion(zip){
                 'Accept': 'application/json'
                 }
         })
-        .then(response => response.json())
+        .then(checkStatus)
         .then(activity => dispatch({type: 'SUGGEST_ACTIVITY', payload: activity}))
-        }
+        .catch(err => {err.json().then(message  => dispatch({type: 'WEATHER_ERROR', payload: message}))})
+    }
 }
 
 function checkStatus(response) {
@@ -145,6 +150,5 @@ function checkStatus(response) {
     } else {
         throw response;
     }
-
 }
 
