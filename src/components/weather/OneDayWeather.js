@@ -3,7 +3,8 @@ import Suggestion from './Suggestion.js';
 
 const OneDayWeather = ({weather, loading, handleClick, suggestion, errMessage}) => {
 
-        const handleSuggestionClick = () => {
+        const handleSuggestionClick = (event) => {
+            event.preventDefault();
             handleClick(weather.zip);
         }
         //Determine if weather has been fetched yet.
