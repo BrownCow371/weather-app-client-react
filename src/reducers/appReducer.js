@@ -5,14 +5,14 @@ export default function appReducer(
         weather: {},
         conditions: [],
         activities: [],
-        response: '',
+        errMessage: '',
         suggestion: {}
        }, 
     action){
 
     switch(action.type){
         case 'LOADING_DATA':
-            return {...state, loading: true}
+            return {...state, loading: true, errMessage: ''}
         case 'FETCH_WEATHER':
             return {...state, weather: action.payload, loading: false, suggestion: {}}
         // case 'FETCH_FORECAST':
@@ -30,6 +30,9 @@ export default function appReducer(
             return {...state, activities: state.activities.filter(act => act.id !== action.payload.id), loading: false }
         case 'SUGGEST_ACTIVITY':
                 return {...state, suggestion: action.payload, loading: false}
+        case 'ERROR_MESSAGE':
+                console.log("error", action.payload)
+                return {...state, loading: false, errMessage: action.payload.error}
         default:
             return state;
     }
