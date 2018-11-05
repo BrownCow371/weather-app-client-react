@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {connect} from "react-redux";
 
 // components
-  // save for later - import FiveDayWeather from '../components/FiveDayWeather.js';
 import NavBar from '../components/static/NavBar.js';
 import Footer from '../components/static/Footer.js';
 import Greeting from '../components/static/Greeting.js';

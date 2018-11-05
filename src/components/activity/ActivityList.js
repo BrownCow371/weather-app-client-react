@@ -5,7 +5,6 @@ const ActivityList = (props) => {
 
     const handleClickRemove = (id) => {
         props.handleClickRemove(id);
-        console.log("ID", id);
     }
 
         return (
@@ -34,6 +33,7 @@ const ActivityList = (props) => {
                             <td>{activity.conditions.map((condition) => (
                                 <span key={condition.id}>{condition.desc}, </span>
                             ))}</td>
+                            
                             <td> <Link key={activity.id} to ={`/activities/${activity.id}/edit`}>Edit</Link></td>
                             <td> <button onClick={()=>handleClickRemove(activity.id)}>REMOVE</button> </td>
 
