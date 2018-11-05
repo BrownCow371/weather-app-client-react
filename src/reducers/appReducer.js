@@ -44,6 +44,8 @@ export default function appReducer(
             return {...state, suggestion: {}, errMessages: {...state.errMessages, suggestionError: action.payload.error}, loading: false}
         case 'LOGIN_USER':
             return {...state, jwt: action.payload, authenticating: false}
+        case  'LOGIN_ERROR':
+            return {...state, suggestion: {}, errMessages: {...state.errMessages, UserError: action.payload.error}, loading: false}
         default:
             return state;
     }
