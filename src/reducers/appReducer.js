@@ -5,14 +5,14 @@ export default function appReducer(
         weather: {},
         conditions: [],
         activities: [],
-        errMessage: '',
+        errMessages: {},
         suggestion: {}
        }, 
     action){
 
     switch(action.type){
         case 'LOADING_DATA':
-            return {...state, loading: true, errMessage: ''}
+            return {...state, loading: true, errMessages: {}}
         case 'FETCH_WEATHER':
             return {...state, weather: action.payload, loading: false, suggestion: {}}
         // case 'FETCH_FORECAST':
@@ -29,10 +29,13 @@ export default function appReducer(
         case 'REMOVE_ACTIVITY':
             return {...state, activities: state.activities.filter(act => act.id !== action.payload.id), loading: false }
         case 'SUGGEST_ACTIVITY':
-                return {...state, suggestion: action.payload, loading: false}
-        case 'ERROR_MESSAGE':
-                console.log("error", action.payload)
-                return {...state, loading: false, errMessage: action.payload.error}
+            return {...state, suggestion: action.payload, loading: false}
+        case 'WEATHER_ERROR':
+            return {...state, errMessages: {...state.errMessages, weatherError: action.payload.error}, loading: false}
+        case  'ACTIVITY_ERROR':
+            return {...state, errMessages: {...state.errMessages, activityError: action.payload.error}, loading: false}
+        case  'CONDITION_ERROR':
+            return {...state, errMessages: {...state.errMessages, conditionError: action.payload.error}, loading: false}
         default:
             return state;
     }
