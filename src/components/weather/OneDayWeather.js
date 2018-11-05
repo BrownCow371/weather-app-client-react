@@ -25,7 +25,7 @@ const OneDayWeather = ({weather, loading, handleClick, suggestion, errMessage}) 
                         <p><strong>Wind Speed:</strong> {weather.wind_speed}</p>
                         <p className="center"><img src={`http://openweathermap.org/img/w/${weather.icon}.png`} alt="weather icon"/></p>
                         <button className="big-button" onClick={handleSuggestionClick}>Get Activity Suggestion</button>
-                        <Suggestion suggestion={suggestion} errMessage={errMessage}/>
+                        <Suggestion suggestion={suggestion}/>
                         <h3>{errMessage.suggestionError}</h3>
                     </div> 
                 </>
