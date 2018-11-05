@@ -9,6 +9,7 @@ import Footer from '../components/static/Footer.js';
 import Greeting from '../components/static/Greeting.js';
 
 // other containers
+import Login from './Login.js';
 import Activities from './Activities.js';
 import NewActivity from './NewActivity.js';
 import ShowActivity from './ShowActivity.js';
@@ -32,6 +33,7 @@ class App extends Component {
         <div className="wrapper">
               <NavBar />
               <Route path = "/" component={Greeting}/>
+              <Route exact path='/login' component={Login} />
               <Route exact path='/weather' component={WeatherSearch} />
               <Route exact path='/activities' component={Activities} />
               <Route exact path='/activities/new' component={NewActivity} />
