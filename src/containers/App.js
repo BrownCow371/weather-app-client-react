@@ -4,15 +4,15 @@ import {connect} from "react-redux";
 
 // components
   // save for later - import FiveDayWeather from '../components/FiveDayWeather.js';
-import NavBar from '../components/static/NavBar.js'
-import Footer from '../components/static/Footer.js'
+import NavBar from '../components/static/NavBar.js';
+import Footer from '../components/static/Footer.js';
 import Greeting from '../components/static/Greeting.js';
 
 // other containers
 import Activities from './Activities.js';
-import NewActivity from './NewActivity.js'
-import ShowActivity from './ShowActivity.js'
-import EditActivity from './EditActivity.js'
+import NewActivity from './NewActivity.js';
+import ShowActivity from './ShowActivity.js';
+import EditActivity from './EditActivity.js';
 import WeatherSearch from './WeatherSearch.js';
 
 // actions
@@ -26,8 +26,6 @@ class App extends Component {
   }
 
    render() {
-
-    // <Route exact path='/forecast' component={FiveDayWeather} />
 
     return (
       <Router>
