@@ -77,12 +77,13 @@ export function updateActivity(requestData){
         dispatch({type: 'LOADING_DATA'});
 
         requestData.activity.condition_ids = requestData.activity.conditions.map(c => c.id);
-
+       
         return fetch(`/api/activities/${requestData.activity.id}`, {
             method: "PUT",
             headers:{
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                
                 },
             body: JSON.stringify(requestData),
         })
@@ -141,6 +142,23 @@ export function fetchSuggestion(zip){
         .then(checkStatus)
         .then(activity => dispatch({type: 'SUGGEST_ACTIVITY', payload: activity}))
         .catch(err => {err.json().then(message  => dispatch({type: 'SUGGESTION_ERROR', payload: message}))})
+    }
+}
+
+export function loginUser(auth){
+    return(dispatch) => {
+    dispatch({type: 'LOGGING_IN_USER'});
+
+    return fetch('api/user_token', {
+        method: "POST",
+        headers:{
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+            },
+        body: JSON.stringify(auth)
+    })
+    .then(checkStatus)
+    .then(result => dispatch({type: 'LOGIN_USER', payload: result.jwt}))
     }
 }
 
