@@ -61,6 +61,10 @@ p {
   float: center;
 }
 
+.blue {
+  color: #184CB1;
+}
+
 .sidebar {
   background: #eee;
   border: 1px solid #ccc;
