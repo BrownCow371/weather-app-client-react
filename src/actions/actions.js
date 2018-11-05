@@ -7,8 +7,9 @@ export function fetchWeather(zip) {
               'Accept': 'application/json'
             }
           })
-            .then(response => response.json())
-            .then(weather => dispatch({type: 'FETCH_WEATHER', payload: weather}))
+            .then(checkStatus)
+            .then(json => dispatch({type: 'FETCH_WEATHER', payload: json}))
+            .catch(err => {err.json().then(message  => dispatch({type: 'ERROR_MESSAGE', payload: message}))})
     }
 }
 //   Future Functionality
@@ -136,5 +137,14 @@ export function fetchSuggestion(zip){
         .then(response => response.json())
         .then(activity => dispatch({type: 'SUGGEST_ACTIVITY', payload: activity}))
         }
+}
+
+function checkStatus(response) {
+    if (response.status >= 200 && response.status <300) {
+        return response.json();
+    } else {
+        throw response;
+    }
+
 }
 
