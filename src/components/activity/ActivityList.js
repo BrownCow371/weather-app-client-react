@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 const ActivityList = (props) => {
 
-    const handleClickRemove = (id) => {
+    const handleClickRemove = (id, event) => {
+        event.preventDefault();
         props.handleClickRemove(id);
     }
 
@@ -33,9 +34,9 @@ const ActivityList = (props) => {
                             <td>{activity.conditions.map((condition) => (
                                 <span key={condition.id}>{condition.desc}, </span>
                             ))}</td>
-                            
+
                             <td> <Link key={activity.id} to ={`/activities/${activity.id}/edit`}>Edit</Link></td>
-                            <td> <button onClick={()=>handleClickRemove(activity.id)}>REMOVE</button> </td>
+                            <td> <button onClick={(event)=>handleClickRemove(activity.id, event)}>REMOVE</button> </td>
 
                         </tr>
                     ))}
