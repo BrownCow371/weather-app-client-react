@@ -159,6 +159,8 @@ export function loginUser(auth){
     })
     .then(checkStatus)
     .then(result => dispatch({type: 'LOGIN_USER', payload: result.jwt}))
+    .catch(err => {err.json().then(message  => dispatch({type: 'LOGIN_ERROR', payload: message}))})
+
     }
 }
 
