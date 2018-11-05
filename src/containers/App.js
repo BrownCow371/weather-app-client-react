@@ -21,8 +21,8 @@ import {fetchActivities, fetchConditions} from '../actions/actions.js'
 class App extends Component {
 
   componentDidMount(){
-    this.props.fetchActivities();
     this.props.fetchConditions();
+    this.props.fetchActivities();
   }
 
    render() {
