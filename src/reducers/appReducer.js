@@ -2,17 +2,21 @@
 export default function appReducer(
     state = {
         loading: false,
+        authenticating: false,
         weather: {},
         conditions: [],
         activities: [],
         errMessages: {},
-        suggestion: {}
+        suggestion: {},
+        jwt: {}
        }, 
     action){
 
     switch(action.type){
         case 'LOADING_DATA':
             return {...state, loading: true, errMessages: {}}
+        case 'LOGGING_IN_USER':
+            return {...state, authenticating: true, errMessages: {}}
         case 'FETCH_WEATHER':
             return {...state, weather: action.payload, loading: false, suggestion: {}}
         // case 'FETCH_FORECAST':
@@ -38,6 +42,8 @@ export default function appReducer(
             return {...state, errMessages: {...state.errMessages, conditionError: action.payload.error}, loading: false}
         case  'SUGGESTION_ERROR':
             return {...state, suggestion: {}, errMessages: {...state.errMessages, suggestionError: action.payload.error}, loading: false}
+        case 'LOGIN_USER':
+            return {...state, jwt: action.payload, authenticating: false}
         default:
             return state;
     }
