@@ -22,7 +22,6 @@ class WeatherSearch extends Component {
         event.preventDefault();
         this.props.fetchWeather(this.state.zip)
         .then(data => this.setState({zip: ''}))
-                
     }
 
     handleSuggestionClick = (zip) => {
@@ -31,18 +30,20 @@ class WeatherSearch extends Component {
 
     render(){
         const isEnabled = this.state.zip.match(/\b\d{5}\b/)
+        // disabled={!isEnabled}
+        
 
         return(
             <>
-                <h2>Search for Current Local Weather:</h2>
+                <h2>Search for Current Local Weather: <span className="warning"> {this.props.errMessage}</span></h2>
 
                 <form onSubmit={this.onSubmitHandler}>
                 <label><strong> Enter Zipcode: </strong></label>
                 <input type="text" onChange={this.handleOnChange} value={this.state.zip}/>
-                <input type="submit" disabled={!isEnabled} />
+                <input type="submit"  />
                 </form>
-                
                 <p><strong>(Only 5 digit US Zipcodes accepted.) </strong></p>
+                <h3 className="warning">  </h3>
                 <OneDayWeather 
                     loading={this.props.loading} 
                     weather={this.props.weather}
@@ -56,7 +57,8 @@ class WeatherSearch extends Component {
 const mapStateToProps = (state) => {
     return {weather: state.weather,
             loading: state.loading,
-            suggestion: state.suggestion}
+            suggestion: state.suggestion,
+            errMessage: state.errMessage}
   }
 
 export default connect(mapStateToProps,{fetchWeather, fetchSuggestion})(WeatherSearch)
