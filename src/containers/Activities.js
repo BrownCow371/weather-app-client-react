@@ -18,6 +18,7 @@ class Activities extends Component {
         } else {
             return (
                 <>
+                    <h3 className="warning">{this.props.errMessage}</h3>
                     <h2 className="center">Activities List!</h2>
                     <ActivityList handleClickRemove={this.handleClickRemove} activities={this.props.activities}/>  
                 </>
@@ -28,7 +29,8 @@ class Activities extends Component {
 
 const mapStateToProps = (state) => {
     return {activities: state.activities,
-            loading: state.loading}
+            loading: state.loading,
+            errMessage: state.errMessages.activityError}
   }
 
 export default connect(mapStateToProps, {removeActivity})(Activities)
