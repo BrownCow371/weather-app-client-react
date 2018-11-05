@@ -3,14 +3,14 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {addActivity} from '../actions/actions.js';
 import ActivityForm from '../components/activity/ActivityForm.js';
-import Loading from '../components/static/Loading.js'
-import {handleActivityChange, handleConditionSelection, validateField} from '../components/activity/changeFunctions.js'
+import Loading from '../components/static/Loading.js';
+import {handleActivityChange, handleConditionSelection, validateField} from '../components/activity/changeFunctions.js';
 
 class NewActivity extends Component {
     constructor(props){
         super(props)
         this.state = {
-            render: "NEW",
+            redirect: "FORM",
             activity: {
                 desc: '',
                 min_temp: '',
@@ -29,44 +29,54 @@ class NewActivity extends Component {
         this.handleConditionSelection = handleConditionSelection.bind(this)
     }
 
-    handleSubmit = (event) => {
+    handleNewSubmit = (event) => {
         event.preventDefault();
         this.props.addActivity(this.state)
-        .then(action => this.setState({ id: action.payload.id}))
-        .then(c => this.setState({render: "REDIRECT_SHOW"}))
-        // this.setState({render: "REDIRECT_SHOW"})
+        .then(action => {
+            if (action) {
+            this.setState({ id: action.payload.id})
+            this.setState({redirect: "REDIRECT_SHOW"})
+            }
+        })
+        // .then(c => this.setState({redirect: "REDIRECT_SHOW"}))
+        // this.setState({redirect: "REDIRECT_SHOW"})
     }
+
+
 
     render(){
         if (this.props.loading){
-            return <Loading />
+            return null
         } else {
-            switch(this.state.render){
-                case "REDIRECT_SHOW":
-                    return <Redirect to={`/activities/${this.state.id}`} />
-                case "NEW":
+            switch(this.state.redirect){
+                case "FORM":
                     return (
                         <div className="activity-box">
                             <ActivityForm 
                                 formErrors={this.state.formErrors}
                                 activity={this.state.activity}
                                 conditions={this.props.conditions} 
-                                handleSubmit={this.handleSubmit}
+                                handleSubmit={this.handleNewSubmit}
                                 handleChange={this.handleActivityChange}
                                 handleCheckbox={this.handleConditionSelection}
                                 title={"Add New Activity Form"}/>
+                            <h3 className="warning">{this.props.errMessage}</h3>
                         </div>
                     )
+                case "REDIRECT_SHOW":
+                    return <Redirect to={`/activities/${this.state.id}`} />
                 default:
-                    return null
-                    
+                    return null;
             }
         }
     }
 }
+
+
 const mapStateToProps= (state) => {
     return {conditions: state.conditions,
-            loading: state.loading}
+            loading: state.loading,
+            errMessage: state.errMessages.activityError}
 }
 
 export default connect(mapStateToProps, {addActivity})(NewActivity)
