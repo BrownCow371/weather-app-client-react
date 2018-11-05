@@ -47,7 +47,8 @@ class WeatherSearch extends Component {
                     loading={this.props.loading} 
                     weather={this.props.weather}
                     handleClick={this.handleSuggestionClick}
-                    suggestion={this.props.suggestion}/>
+                    suggestion={this.props.suggestion}
+                    />
             </>
         )
     }
@@ -57,7 +58,7 @@ const mapStateToProps = (state) => {
     return {weather: state.weather,
             loading: state.loading,
             suggestion: state.suggestion,
-            errMessage: state.errMessage}
+            errMessage: state.errMessages.weatherError}
   }
 
 export default connect(mapStateToProps,{fetchWeather, fetchSuggestion})(WeatherSearch)
