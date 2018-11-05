@@ -35,7 +35,7 @@ class WeatherSearch extends Component {
 
         return(
             <>
-                <h2>Search for Current Local Weather: <span className="warning"> {this.props.errMessage}</span></h2>
+                <h2>Search for Current Local Weather:</h2>
 
                 <form onSubmit={this.onSubmitHandler}>
                 <label><strong> Enter Zipcode: </strong></label>
@@ -48,6 +48,7 @@ class WeatherSearch extends Component {
                     weather={this.props.weather}
                     handleClick={this.handleSuggestionClick}
                     suggestion={this.props.suggestion}
+                    errMessage={this.props.errMessage}
                     />
             </>
         )
@@ -58,7 +59,7 @@ const mapStateToProps = (state) => {
     return {weather: state.weather,
             loading: state.loading,
             suggestion: state.suggestion,
-            errMessage: state.errMessages.weatherError}
+            errMessage: state.errMessages}
   }
 
 export default connect(mapStateToProps,{fetchWeather, fetchSuggestion})(WeatherSearch)
