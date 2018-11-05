@@ -36,6 +36,8 @@ export default function appReducer(
             return {...state, errMessages: {...state.errMessages, activityError: action.payload.error}, loading: false}
         case  'CONDITION_ERROR':
             return {...state, errMessages: {...state.errMessages, conditionError: action.payload.error}, loading: false}
+        case  'SUGGESTION_ERROR':
+            return {...state, suggestion: {}, errMessages: {...state.errMessages, suggestionError: action.payload.error}, loading: false}
         default:
             return state;
     }
