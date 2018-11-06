@@ -7,9 +7,13 @@ export function fetchWeather(zip) {
               'Accept': 'application/json'
             }
           })
+            // .then(response => response.json())
             .then(checkStatus)
             .then(weather => dispatch({type: 'FETCH_WEATHER', payload: weather}))
             .catch(err => {err.json().then(message  => dispatch({type: 'WEATHER_ERROR', payload: message}))})
+            // .catch(err => {
+            //     debugger;
+            //     console.log("ERROR", err.json())})
     }
 }
 //   Future Functionality
