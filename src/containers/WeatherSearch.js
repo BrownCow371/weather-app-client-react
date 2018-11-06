@@ -9,7 +9,6 @@ class WeatherSearch extends Component {
     constructor(props){
         super(props);
         this.state ={
-            render: false,
             zip: '',
         }
     }
