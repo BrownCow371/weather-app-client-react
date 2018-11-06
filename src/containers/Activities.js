@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {removeActivity} from '../actions/actions.js';
-import ActivityList from '../components/activity/ActivityList.js'
+import ActivityTable from '../components/activity/ActivityTable.js'
 import Loading from '../components/static/Loading.js'
 
 
@@ -12,6 +12,7 @@ class Activities extends Component {
         this.props.removeActivity(id)};
     }
 
+    
     render(){
         if (this.props.loading) {
             return <Loading />
@@ -20,7 +21,7 @@ class Activities extends Component {
                 <>
                     <h3 className="warning">{this.props.errMessage}</h3>
                     <h2 className="center">Activities List!</h2>
-                    <ActivityList 
+                    <ActivityTable 
                         handleClickRemove={this.handleClickRemove} 
                         activities={this.props.activities}/>  
                 </>
