@@ -38,8 +38,6 @@ class NewActivity extends Component {
             this.setState({redirect: "REDIRECT_SHOW"})
             }
         })
-        // .then(c => this.setState({redirect: "REDIRECT_SHOW"}))
-        // this.setState({redirect: "REDIRECT_SHOW"})
     }
 
 
