@@ -19,12 +19,14 @@ const OneDayWeather = ({weather, loading, handleClick, suggestion, errMessage}) 
             return (
                 <>
                     <h2 className="center">Current Weather for {weather.zip}:</h2>  
-                    <div key={weather.id} className="weather-box">    
-                        <p><strong>Temperature:</strong> {weather.temp}</p>
-                        <p><strong>Conditions:</strong> {weather.desc}</p>
-                        <p><strong>Humidity:</strong> {weather.humidity}</p>
-                        <p><strong>Wind Speed:</strong> {weather.wind_speed}</p>
-                        <p className="center"><img src={`http://openweathermap.org/img/w/${weather.icon}.png`} alt="weather icon"/></p>
+                    <div key={weather.id} className="weather-box">  
+                        <div className="icon-box">  
+                            <p><strong>Temperature:</strong> {weather.temp}</p>
+                            <p><strong>Conditions:</strong> {weather.desc}</p>
+                            <p><strong>Humidity:</strong> {weather.humidity}</p>
+                            <p><strong>Wind Speed:</strong> {weather.wind_speed}</p>
+                            <p className="center"><img src={`http://openweathermap.org/img/w/${weather.icon}.png`} alt="weather icon"/></p>
+                        </div>
                         <button className="big-button" onClick={handleSuggestionClick}>Get Activity Suggestion</button>
                         <Suggestion suggestion={suggestion}/>
                         <h3>{errMessage.suggestionError}</h3>
