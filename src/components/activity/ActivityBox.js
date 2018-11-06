@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 const ActivityBox = ({activity, loading}) => {
     
@@ -20,6 +21,9 @@ const ActivityBox = ({activity, loading}) => {
                             {activity.conditions.map (c => <li key={c.id}>{c.desc}</li>)}
                         </ul>
                 </ul>
+                <button className="center big-button fixed-width">
+                    <Link to={`/activities/${activity.id}/edit`}>Edit Activity</Link>
+                </button>
             </div>
             )
     } else {
