@@ -63,7 +63,6 @@ class EditActivity extends Component {
         event.preventDefault();
         this.props.updateActivity(this.state)
         .then(action => {
-            console.log("edit action", action)
             if(action) {
                 this.setState({redirect: 'REDIRECT_SHOW'})
             }
