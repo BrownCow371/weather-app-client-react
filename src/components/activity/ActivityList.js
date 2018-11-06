@@ -8,10 +8,10 @@ const ActivityList = (props) => {
         props.handleClickRemove(id);
     }
 
-        return (
-            <div className="activities-box">
-                <table>
-                    <tbody>
+    return (
+        <div className="activities-box">
+            <table>
+                <tbody>
                     <tr>
                         <th>Id</th>
                         <th>Desc</th>
@@ -40,13 +40,11 @@ const ActivityList = (props) => {
 
                         </tr>
                     ))}
-                    </tbody>
-                </table>
-                <button className="big-button" ><Link to ="/activities/new">Add New Activity</Link> </button>          
-
-            </div>
-        )
-    
+                </tbody>
+            </table>
+            <button className="big-button" ><Link to ="/activities/new">Add New Activity</Link> </button>          
+        </div>
+    )
 }
 
 export default ActivityList;
