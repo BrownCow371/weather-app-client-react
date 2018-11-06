@@ -64,7 +64,7 @@ class EditActivity extends Component {
         this.props.updateActivity(this.state)
         .then(action => {
             if(action) {
-                this.setState({redirect: 'REDIRECT_SHOW'})
+                this.setState({redirect: 'SHOW'})
             }
         })  
     }
@@ -72,7 +72,7 @@ class EditActivity extends Component {
 
     render(){
         switch(this.state.redirect){
-            case 'REDIRECT_SHOW':
+            case 'SHOW':
                 return <Redirect to={`/activities/${this.state.activity.id}`}/>
             case 'REDIRECT':
                 return <Redirect to="/activities"/>
