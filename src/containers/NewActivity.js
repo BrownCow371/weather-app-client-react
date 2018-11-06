@@ -34,12 +34,12 @@ class NewActivity extends Component {
         this.props.addActivity(this.state)
         .then(action => {
             if (action) {
-            this.setState({ id: action.payload.id})
-            this.setState({redirect: "REDIRECT_SHOW"})
+                this.setState({ id: action.payload.id})
+                this.setState({redirect: "REDIRECT_SHOW"})
             }
         })
     }
-
+    
 
 
     render(){
