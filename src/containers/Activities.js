@@ -20,7 +20,9 @@ class Activities extends Component {
                 <>
                     <h3 className="warning">{this.props.errMessage}</h3>
                     <h2 className="center">Activities List!</h2>
-                    <ActivityList handleClickRemove={this.handleClickRemove} activities={this.props.activities}/>  
+                    <ActivityList 
+                        handleClickRemove={this.handleClickRemove} 
+                        activities={this.props.activities}/>  
                 </>
             )
         }
