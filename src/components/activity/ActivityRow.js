@@ -18,19 +18,19 @@ export default class ActivityRow extends Component {
 
    handleClickLike = (event) => {
         event.preventDefault();
-        this.setState((state, props) => ({likes: ++state.likes}), 
-            () => (fetch(`/api/activities/${this.props.activity.id}`, {
-                        method: "PUT",
-                        headers:{
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                            },
-                        body: JSON.stringify(this.state)
-                    })
-                    .then(response =>response.json())
-                    .then(activity => console.log(activity))
-                    )
-                )
+
+        let updatedState = () => {return {likes: ++this.state.likes}}
+
+        fetch(`/api/activities/${this.props.activity.id}`, {
+            method: "PUT",
+            headers:{
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+                },
+            body: JSON.stringify(updatedState())
+        })
+        .then(response =>response.json())
+        .then(activity => this.setState({likes: activity.likes}))
     }
 
     render(){
