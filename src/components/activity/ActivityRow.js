@@ -16,25 +16,27 @@ export default class ActivityRow extends Component {
         this.props.handleClickRemove(id);
     }
 
-   handleClickLike = () => {
-        this.setState({likes: ++this.state.likes})
-        fetch(`/api/activities/${this.props.activity.id}`, {
-            method: "PUT",
-            headers:{
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-                },
-            body: JSON.stringify(this.state)
-        })
-        .then(response =>response.json())
-        .then(activity => console.log(activity))
-
+   handleClickLike = (event) => {
+        event.preventDefault();
+        this.setState((state, props) => ({likes: ++state.likes}), 
+            () => (fetch(`/api/activities/${this.props.activity.id}`, {
+                        method: "PUT",
+                        headers:{
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                            },
+                        body: JSON.stringify(this.state)
+                    })
+                    .then(response =>response.json())
+                    .then(activity => console.log(activity))
+                    )
+                )
     }
 
-        render(){
-            let activity = this.props.activity
+    render(){
+        let activity = this.props.activity
         return (
-            <tr key={activity.id}>
+            <tr>
                 <td><Link to={`/activities/${activity.id}`} >{activity.id}</Link> </td>
                 <td>{activity.desc} </td>
                 <td>{activity.min_temp} </td>
@@ -48,7 +50,7 @@ export default class ActivityRow extends Component {
                 <td> <Link key={activity.id} to ={`/activities/${activity.id}/edit`}>Edit</Link></td>
                 <td> <button onClick={(event)=>this.handleClickRemove(activity.id, event)}>REMOVE</button> </td>
                 <td> <button onClick={this.handleClickLike}>LIKE</button> </td>
-                <td> {this.state.likes}</td>
+                <td>{this.state.likes}</td>
             </tr>
         )
     }
