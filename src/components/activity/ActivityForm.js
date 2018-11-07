@@ -56,6 +56,15 @@ const ActivityForm = ({formErrors, title, activity, conditions, handleChange, ha
         <ActivityFormErrors formErrors={formErrors}/>
     </>
     )
+    
 }
+
+// ActivityForm.defaultProps = {
+//     activity: {
+//         max_wind_speed: '',
+//         max_temp: '',
+//         min_temp: ''}
+
+// }
 
 export default ActivityForm;
