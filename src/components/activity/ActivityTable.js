@@ -19,10 +19,11 @@ const ActivityTable = (props) => {
                         <th>Edit</th>
                         <th>Remove</th>
                         <th>Like</th>
-                        <th>Count</th>
+                        <th>Like Count</th>
                     </tr>
                     {props.activities.map((activity) => (
                         <ActivityRow 
+                            key={activity.id}
                             activity={activity}
                             handleClickRemove={props.handleClickRemove}
                             />
