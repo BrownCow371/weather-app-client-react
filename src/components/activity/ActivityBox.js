@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
-const ActivityBox = ({activity, loading}) => {
+const ActivityBox = ({activity}) => {
     
     function renderThis(){
         return !!activity
