@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import {updateActivity} from '../../actions/actions.js';
+import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 
-export default class ActivityRow extends Component {
+class ActivityRow extends Component {
     
     constructor(props){
         super(props);
@@ -18,19 +20,8 @@ export default class ActivityRow extends Component {
 
    handleClickLike = (event) => {
         event.preventDefault();
-
-        let updatedState = () => {return {likes: ++this.state.likes}}
-
-        fetch(`/api/activities/${this.props.activity.id}`, {
-            method: "PUT",
-            headers:{
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-                },
-            body: JSON.stringify(updatedState())
-        })
-        .then(response =>response.json())
-        .then(activity => this.setState({likes: activity.likes}))
+        let updatedState = () => {return {activity: {likes: ++this.state.likes, id: this.props.activity.id}}}
+        this.props.updateActivity(updatedState())        
     }
 
     render(){
@@ -55,3 +46,5 @@ export default class ActivityRow extends Component {
         )
     }
 }
+
+export default connect(null, {updateActivity})(ActivityRow)
