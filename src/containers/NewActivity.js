@@ -31,7 +31,12 @@ class NewActivity extends Component {
 
     handleNewSubmit = (event) => {
         event.preventDefault();
-        this.props.addActivity(this.state)
+        // grab array of condition ids and add to activity state
+        let newActivity = () => {return {activity: {...this.state.activity, 
+            condition_ids: this.state.activity.conditions.map(c => c.id)}}}
+        // send activity to addActivity action, post fetch redirect to show page for new activity
+
+        this.props.addActivity(newActivity())
         .then(action => {
             if (action) {
                 this.setState({ id: action.payload.id})

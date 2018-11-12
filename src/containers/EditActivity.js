@@ -46,13 +46,15 @@ class EditActivity extends Component {
     }
 
     componentDidMount(){
+        // find id of activity based on url
         let id = this.props.match.params.id;
         let activity = this.props.activities.find(activity => parseInt(activity.id) === parseInt(id));
+        // if activity found, set null values to empty strings 
+        // for controlled form and set state to activity
         if (activity) {
-            
             this.swapNull(activity)
-
             this.setState({activity: activity}) 
+        // else redirect to Activities list page
         } else {
             this.setState({redirect: 'REDIRECT'})
         }
@@ -61,7 +63,12 @@ class EditActivity extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.updateActivity(this.state)
+        // grab array of condition ids and add to activity state
+        let modifiedActivity = () => {return {activity: {...this.state.activity, 
+            condition_ids: this.state.activity.conditions.map(c => c.id)}}}
+             
+        // send activity to updateActivity action, post fetch redirect to show page for updated activity
+        this.props.updateActivity(modifiedActivity())
         .then(action => {
             if(action) {
                 this.setState({redirect: 'SHOW'})

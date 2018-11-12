@@ -61,9 +61,7 @@ export function fetchConditions() {
 export function updateActivity(requestData){
     return (dispatch) => {
         dispatch({type: 'LOADING_DATA'});
-        if (requestData.activity.conditions){
-        requestData.activity.condition_ids = requestData.activity.conditions.map(c => c.id);
-        }
+       
         return fetch(`/api/activities/${requestData.activity.id}`, {
             method: "PUT",
             headers:{
