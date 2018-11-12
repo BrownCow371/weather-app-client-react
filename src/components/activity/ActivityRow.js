@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {updateActivity} from '../../actions/actions.js';
-import {connect} from 'react-redux';
+// import {updateActivity} from '../../actions/actions.js';
+// import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class ActivityRow extends Component {
@@ -18,10 +18,20 @@ class ActivityRow extends Component {
         this.props.handleClickRemove(id);
     }
 
+    // update likes without using the store
    handleClickLike = (event) => {
         event.preventDefault();
-        let updatedState = () => {return {activity: {likes: ++this.state.likes, id: this.props.activity.id}}}
-        this.props.updateActivity(updatedState())        
+        let updatedLikes = () => {return {activity: {likes: this.state.likes+1, id: this.props.activity.id}}}
+        fetch(`/api/activities/${this.props.activity.id}`, {
+            method: "PUT",
+            headers:{
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+                },
+            body: JSON.stringify(updatedLikes())
+        })
+        .then(response =>response.json())
+        .then(activity => this.setState({likes: activity.likes}))       
     }
 
     render(){
@@ -47,4 +57,5 @@ class ActivityRow extends Component {
     }
 }
 
-export default connect(null, {updateActivity})(ActivityRow)
+// export default connect(null, {updateActivity})(ActivityRow)
+export default ActivityRow
