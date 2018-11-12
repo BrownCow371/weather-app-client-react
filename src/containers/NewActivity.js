@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-import {addActivity} from '../actions/actions.js';
+import {addActivity} from '../actions/activities.js';
 import ActivityForm from '../components/activity/ActivityForm.js';
 // import Loading from '../components/static/Loading.js';
 import {handleActivityChange, handleConditionSelection, validateField} from '../components/activity/changeFunctions.js';
@@ -31,7 +31,7 @@ class NewActivity extends Component {
 
     handleNewSubmit = (event) => {
         event.preventDefault();
-        // grab array of condition ids and add to activity state
+        // grab array of condition ids and add to activity object
         let newActivity = () => {return {activity: {...this.state.activity, 
             condition_ids: this.state.activity.conditions.map(c => c.id)}}}
         // send activity to addActivity action, post fetch redirect to show page for new activity

@@ -9,6 +9,7 @@ import Greeting from '../components/static/Greeting.js';
 
 // other containers
 import Login from './Login.js';
+import SignUp from './SignUp.js';
 import Activities from './Activities.js';
 import NewActivity from './NewActivity.js';
 import ShowActivity from './ShowActivity.js';
@@ -16,7 +17,9 @@ import EditActivity from './EditActivity.js';
 import WeatherSearch from './WeatherSearch.js';
 
 // actions
-import {fetchActivities, fetchConditions} from '../actions/actions.js'
+import {fetchActivities} from '../actions/activities.js'
+import {fetchConditions} from '../actions/conditions.js'
+
 
 class App extends Component {
 
@@ -33,6 +36,7 @@ class App extends Component {
               <NavBar />
               <Route path = "/" component={Greeting}/>
               <Route exact path='/login' component={Login} />
+              <Route exact path='/signup' component={SignUp} />
               <Route exact path='/weather' component={WeatherSearch} />
               <Route exact path='/activities' component={Activities} />
               <Route exact path='/activities/new' component={NewActivity} />
