@@ -3,7 +3,7 @@ import ActivityFormErrors from './ActivityFormErrors.js'
 
 const ActivityForm = ({formErrors, title, activity, conditions, handleChange, handleCheckbox, handleSubmit}) => {
 
-    let isDisabled = ((Object.keys(formErrors).find(field => formErrors[field].length > 0)) || activity.desc === "")
+    let isDisabled = ((Object.keys(formErrors).find(field => formErrors[field].length > 0)) || activity.desc === "")    
     
     return (
     <>
@@ -56,6 +56,15 @@ const ActivityForm = ({formErrors, title, activity, conditions, handleChange, ha
         <ActivityFormErrors formErrors={formErrors}/>
     </>
     )
+    
 }
+
+// ActivityForm.defaultProps = {
+//     activity: {
+//         max_wind_speed: '',
+//         max_temp: '',
+//         min_temp: ''}
+
+// }
 
 export default ActivityForm;

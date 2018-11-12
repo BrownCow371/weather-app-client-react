@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {addActivity} from '../actions/actions.js';
 import ActivityForm from '../components/activity/ActivityForm.js';
-import Loading from '../components/static/Loading.js';
+// import Loading from '../components/static/Loading.js';
 import {handleActivityChange, handleConditionSelection, validateField} from '../components/activity/changeFunctions.js';
 
 class NewActivity extends Component {
@@ -34,14 +34,12 @@ class NewActivity extends Component {
         this.props.addActivity(this.state)
         .then(action => {
             if (action) {
-            this.setState({ id: action.payload.id})
-            this.setState({redirect: "REDIRECT_SHOW"})
+                this.setState({ id: action.payload.id})
+                this.setState({redirect: "REDIRECT_SHOW"})
             }
         })
-        // .then(c => this.setState({redirect: "REDIRECT_SHOW"}))
-        // this.setState({redirect: "REDIRECT_SHOW"})
     }
-
+    
 
 
     render(){

@@ -9,7 +9,6 @@ class WeatherSearch extends Component {
     constructor(props){
         super(props);
         this.state ={
-            render: false,
             zip: '',
         }
     }
@@ -38,9 +37,9 @@ class WeatherSearch extends Component {
                 <h2>Search for Current Local Weather:</h2>
 
                 <form onSubmit={this.onSubmitHandler}>
-                <label><strong> Enter Zipcode: </strong></label>
-                <input type="text" onChange={this.handleOnChange} value={this.state.zip}/>
-                <input type="submit"  />
+                    <label><strong> Enter Zipcode: </strong></label>
+                    <input type="text" onChange={this.handleOnChange} value={this.state.zip}/>
+                    <input type="submit"  />
                 </form>
                 <p><strong>(Only 5 digit US Zipcodes accepted.) </strong></p>
                 <OneDayWeather 

@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This application allows the user to fetch weather for a zipcode from the OpenWeatherMap API and then get a suggestion for an activity based on that weather. Users can add, update and remove activities from the master activity list.
+This application allows the user to fetch current weather for a zipcode from the OpenWeatherMap API up to every 30 minutes. Data is stored in the Rails backend API.  The primary functionality of the app is to provide the user with a suggestion for an activity based on that weather. Users can maintain the master activity list by adding, updating and removing activities.
 
 ## Installation
 

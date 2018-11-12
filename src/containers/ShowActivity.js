@@ -5,20 +5,6 @@ import Loading from '../components/static/Loading.js';
 import ActivityBox from '../components/activity/ActivityBox.js';
 
 class ShowActivity extends Component {
-    // constructor(props){
-    //     super(props)
-    //     this.state={
-    //         redirect: false,
-    //     }
-    // }
-
-    // componentDidMount(){
-    //     let id = this.props.match.params.id;
-    //     if (!this.props.activities.find(act => parseInt(act.id) === parseInt(id))) {
-    //             this.setState({redirect: true}) 
-    //     } 
-    // }
-
 
     render(){
         if (this.props.loading) {

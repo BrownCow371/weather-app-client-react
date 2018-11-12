@@ -35,12 +35,12 @@ export default function appReducer(
         case 'SUGGEST_ACTIVITY':
             return {...state, suggestion: action.payload, loading: false}
         case 'WEATHER_ERROR':
-            return {...state, errMessages: {...state.errMessages, weatherError: action.payload.error}, loading: false}
-        case  'ACTIVITY_ERROR':
+            return {...state, errMessages: {...state.errMessages, weatherError: action.payload.error}, loading: false, weather: {}, suggestion: {}}
+        case 'ACTIVITY_ERROR':
             return {...state, errMessages: {...state.errMessages, activityError: action.payload.error}, loading: false}
-        case  'CONDITION_ERROR':
+        case 'CONDITION_ERROR':
             return {...state, errMessages: {...state.errMessages, conditionError: action.payload.error}, loading: false}
-        case  'SUGGESTION_ERROR':
+        case 'SUGGESTION_ERROR':
             return {...state, suggestion: {}, errMessages: {...state.errMessages, suggestionError: action.payload.error}, loading: false}
         case 'LOGIN_USER':
             return {...state, jwt: action.payload, authenticating: false}

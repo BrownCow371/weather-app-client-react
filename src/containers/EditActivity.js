@@ -30,10 +30,28 @@ class EditActivity extends Component {
         this.handleConditionSelection = handleConditionSelection.bind(this)
     }
 
+    swapNull = (activity) => {
+        // swap out null values for empty strings to appease controlled form
+        if (activity.max_wind_speed === null){
+            activity.max_wind_speed= ''
+        }
+        
+        if (activity.max_temp === null){
+            activity.max_temp = ''
+        }
+
+        if (activity.min_temp ===null){
+            activity.min_temp = ''
+        }
+    }
+
     componentDidMount(){
         let id = this.props.match.params.id;
         let activity = this.props.activities.find(activity => parseInt(activity.id) === parseInt(id));
         if (activity) {
+            
+            this.swapNull(activity)
+
             this.setState({activity: activity}) 
         } else {
             this.setState({redirect: 'REDIRECT'})
@@ -45,9 +63,8 @@ class EditActivity extends Component {
         event.preventDefault();
         this.props.updateActivity(this.state)
         .then(action => {
-            console.log("edit action", action)
             if(action) {
-                this.setState({redirect: 'REDIRECT_SHOW'})
+                this.setState({redirect: 'SHOW'})
             }
         })  
     }
@@ -55,7 +72,7 @@ class EditActivity extends Component {
 
     render(){
         switch(this.state.redirect){
-            case 'REDIRECT_SHOW':
+            case 'SHOW':
                 return <Redirect to={`/activities/${this.state.activity.id}`}/>
             case 'REDIRECT':
                 return <Redirect to="/activities"/>

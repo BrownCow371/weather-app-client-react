@@ -42,20 +42,6 @@ export function fetchActivities() {
     }
 }
 
-// export function fetchActivity(id) {
-//     return (dispatch) => {
-//        dispatch({type: 'LOADING_DATA'});
-//        return fetch(`/api/activities/${id}`, {
-//             headers:{
-//             'Content-Type': 'application/json',
-//             'Accept': 'application/json'
-//             }
-//         })
-//             .then(response => response.json())
-//             .then(activity => dispatch({type: 'FETCH_ACTIVITY', payload: activity}))
-
-//     }
-// }
 
 export function fetchConditions() {
     return (dispatch) => {
@@ -75,9 +61,9 @@ export function fetchConditions() {
 export function updateActivity(requestData){
     return (dispatch) => {
         dispatch({type: 'LOADING_DATA'});
-
+        if (requestData.activity.conditions){
         requestData.activity.condition_ids = requestData.activity.conditions.map(c => c.id);
-       
+        }
         return fetch(`/api/activities/${requestData.activity.id}`, {
             method: "PUT",
             headers:{
