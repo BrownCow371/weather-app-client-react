@@ -4,7 +4,7 @@ export function loginUser(auth){
     return(dispatch) => {
     dispatch({type: 'LOGGING_IN_USER'});
 
-    return fetch('api/user_token', {
+    return fetch('api/login', {
         method: "POST",
         headers:{
             'Content-Type': 'application/json',
