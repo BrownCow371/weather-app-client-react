@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {removeActivity} from '../actions/activities.js';
-import ActivityTable from '../components/activity/ActivityTable.js'
-import Loading from '../components/static/Loading.js'
+import {removeActivity} from '../../actions/activities.js';
+import ActivityTable from '../../components/activity/ActivityTable.js'
+import Loading from '../../components/static/Loading.js'
 
 
 class Activities extends Component {

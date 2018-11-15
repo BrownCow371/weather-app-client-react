@@ -8,13 +8,13 @@ import Footer from '../components/static/Footer.js';
 import Greeting from '../components/static/Greeting.js';
 
 // other containers
-import Login from './Login.js';
-import SignUp from './SignUp.js';
-import Activities from './Activities.js';
-import NewActivity from './NewActivity.js';
-import ShowActivity from './ShowActivity.js';
-import EditActivity from './EditActivity.js';
-import WeatherSearch from './WeatherSearch.js';
+import Login from './users/Login.js';
+import SignUp from './users/SignUp.js';
+import Activities from './activities/Activities.js';
+import NewActivity from './activities/NewActivity.js';
+import ShowActivity from './activities/ShowActivity.js';
+import EditActivity from './activities/EditActivity.js';
+import WeatherSearch from './weather/WeatherSearch.js';
 
 // actions
 import {fetchActivities} from '../actions/activities.js'

@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-import {updateActivity} from '../actions/activities.js';
-import ActivityForm from '../components/activity/ActivityForm.js';
+import {updateActivity} from '../../actions/activities.js';
+import ActivityForm from '../../components/activity/ActivityForm.js';
 // import Loading from '../components/static/Loading.js'
-import {handleActivityChange, handleConditionSelection, validateField} from '../components/activity/changeFunctions.js'
+import {handleActivityChange, handleConditionSelection, validateField} from '../../components/activity/changeFunctions.js'
 
 class EditActivity extends Component {
     constructor(props){

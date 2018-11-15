@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import Loading from '../components/static/Loading.js';
-import ActivityBox from '../components/activity/ActivityBox.js';
+import Loading from '../../components/static/Loading.js';
+import ActivityBox from '../../components/activity/ActivityBox.js';
 
 class ShowActivity extends Component {
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchWeather, fetchSuggestion} from '../actions/searches.js';
-import OneDayWeather from '../components/weather/OneDayWeather.js';
+import {fetchWeather, fetchSuggestion} from '../../actions/searches.js';
+import OneDayWeather from '../../components/weather/OneDayWeather.js';
 
 
 
