@@ -1,53 +1,28 @@
+import reduceReducers from 'reduce-reducers';
+import activitiesReducer from './activitiesReducer';
+import conditionsReducer from './conditionsReducer';
+import searchesReducer from './searchesReducer';
+import sharedReducer from './sharedReducer';
+import usersReducer from './usersReducer';
 
-export default function appReducer(
-    state = {
-        loading: false,
-        authenticating: false,
-        weather: {},
-        conditions: [],
-        activities: [],
-        errMessages: {},
-        suggestion: {},
-        jwt: {}
-       }, 
-    action){
+const initialState = {
+    loading: false,
+    authenticating: false,
+    weather: {},
+    conditions: [],
+    activities: [],
+    errMessages: {},
+    suggestion: {},
+    jwt: {}
+   }
 
-    switch(action.type){
-        case 'LOADING_DATA':
-            return {...state, loading: true, errMessages: {}}
-        case 'LOGGING_IN_USER':
-            return {...state, authenticating: true, errMessages: {}}
-        case 'FETCH_WEATHER':
-            return {...state, weather: action.payload, loading: false, suggestion: {}}
-        // case 'FETCH_FORECAST':
-        //     return {...state, forecast: action.payload, loading:false}
-        case 'FETCH_ACTIVITIES':
-            return {...state, activities: action.payload, loading: false}
-        case 'FETCH_CONDITIONS':
-            return {...state, conditions: action.payload, loading: false}
-        case 'UPDATE_ACTIVITY':
-            return {...state, activities: state.activities.map(act => 
-                (act.id === action.payload.id ? action.payload : act)), loading: false }
-        case 'ADD_ACTIVITY':
-            return {...state, activities: [...state.activities, action.payload], loading: false }
-        case 'REMOVE_ACTIVITY':
-            return {...state, activities: state.activities.filter(act => act.id !== action.payload.id), loading: false }
-        case 'SUGGEST_ACTIVITY':
-            return {...state, suggestion: action.payload, loading: false}
-        case 'WEATHER_ERROR':
-            return {...state, errMessages: {...state.errMessages, weatherError: action.payload.error}, loading: false, weather: {}, suggestion: {}}
-        case 'ACTIVITY_ERROR':
-            return {...state, errMessages: {...state.errMessages, activityError: action.payload.error}, loading: false}
-        case 'CONDITION_ERROR':
-            return {...state, errMessages: {...state.errMessages, conditionError: action.payload.error}, loading: false}
-        case 'SUGGESTION_ERROR':
-            return {...state, suggestion: {}, errMessages: {...state.errMessages, suggestionError: action.payload.error}, loading: false}
-        case 'LOGIN_USER':
-            return {...state, jwt: action.payload, authenticating: false}
-        case  'LOGIN_ERROR':
-            return {...state, suggestion: {}, errMessages: {...state.errMessages, UserError: action.payload.error}, loading: false}
-        default:
-            return state;
-    }
+const appReducer = reduceReducers(
+    activitiesReducer, 
+    conditionsReducer, 
+    searchesReducer,
+    usersReducer,
+    sharedReducer,
+    initialState);
 
-}
+export {appReducer};
+
