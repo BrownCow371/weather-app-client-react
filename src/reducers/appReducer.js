@@ -8,12 +8,13 @@ import usersReducer from './usersReducer';
 const initialState = {
     loading: false,
     authenticating: false,
-    weather: {},
-    conditions: [],
+    session: false,
+    jwt: {},
     activities: [],
-    errMessages: {},
+    conditions: [],
+    weather: {},
     suggestion: {},
-    jwt: {}
+    errMessages: {}  
    }
 
 const appReducer = reduceReducers(
