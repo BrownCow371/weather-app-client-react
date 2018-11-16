@@ -36,12 +36,13 @@ class WeatherSearch extends Component {
             <>
                 <h2>Search for Current Local Weather:</h2>
 
-                <form onSubmit={this.onSubmitHandler}>
+                <form className="clearfix" onSubmit={this.onSubmitHandler}>
                     <label><strong> Enter Zipcode: </strong></label>
                     <input type="text" onChange={this.handleOnChange} value={this.state.zip}/>
-                    <input type="submit"  />
+                    <p><strong>(Only 5 digit US Zipcodes accepted.   )</strong></p>
+                    <input className="first-big-button" type="submit"/>
                 </form>
-                <p><strong>(Only 5 digit US Zipcodes accepted.) </strong></p>
+                
                 <OneDayWeather 
                     loading={this.props.loading} 
                     weather={this.props.weather}
