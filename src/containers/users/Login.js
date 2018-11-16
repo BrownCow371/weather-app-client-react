@@ -21,12 +21,15 @@ class Login extends Component {
         event.preventDefault();
         this.props.loginUser(this.state)
         .then(response => {
-            this.setState({auth: {
-                email: '',
-                password: ''
-            },
-            redirect: true})
+            if (this.props.logged_in){
+                this.setState({
+                redirect: true})
+            }    
         });
+        this.setState({auth: {
+            email: '',
+            password: ''
+        }})
     }
 
     handleChange = (event) => {
@@ -39,20 +42,24 @@ class Login extends Component {
 
     render(){
 
-        if (this.state.redirect){
-            return  <Redirect to={`/`} />
+        // if (this.state.redirect){
+            // return  <Redirect to={`/`} />
+        if (this.props.logged_in){
+            return  <h3>Session True</h3>
         } else {
             return (
-                <form>
-                    {this.props.errMessage}
-                    <label><strong> Email: </strong></label>
-                    <input type="email" name="email" value={this.state.auth.email} onChange={this.handleChange}/>
-                    <br />
-                    <label><strong> Password: </strong></label>
-                    <input type="password" name="password" value={this.state.auth.password} onChange={this.handleChange}/>
-                    <br />
-                    <input type="submit"  onClick={this.handleSubmit}/>
-                </form>
+                <div className="login-box clearfix">  
+                    <form >
+                        <label><strong> Email: </strong></label>
+                        <input type="email" name="email" value={this.state.auth.email} onChange={this.handleChange}/>
+                        <br/>
+                        <label><strong> Password: </strong></label>
+                        <input type="password" name="password" value={this.state.auth.password} onChange={this.handleChange}/>
+                        <br/>
+                        <input className="first-big-button" type="submit"  onClick={this.handleSubmit}/>
+                    </form>
+                    <h2 className="warning">{this.props.errMessage}</h2>
+                </div>
             )
         }
     }
@@ -60,7 +67,8 @@ class Login extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        errMessage: state.errMessages.userError
+        errMessage: state.errMessages.userError,
+        logged_in: state.session
     }
 }
 
