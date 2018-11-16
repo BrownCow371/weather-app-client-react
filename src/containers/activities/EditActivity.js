@@ -86,7 +86,7 @@ class EditActivity extends Component {
             default:
                 return (
                     <div className="activity-box">
-                        <ActivityForm 
+                        <ActivityForm
                             formErrors={this.state.formErrors}
                             activity={this.state.activity}
                             conditions={this.props.conditions} 
