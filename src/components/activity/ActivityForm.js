@@ -51,7 +51,7 @@ const ActivityForm = ({formErrors, title, activity, conditions, handleChange, ha
                         </label>
                     ))}
                 </div>
-            <input className="big-button center" type="submit" disabled={isDisabled}/>
+            <input className="first-big-button" type="submit" disabled={isDisabled}/>
         </form>
         <ActivityFormErrors formErrors={formErrors}/>
     </>
