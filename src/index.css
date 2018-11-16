@@ -53,12 +53,13 @@ h3 {
 }
 
 p {
-  margin: 6px 6px;
+  margin: 6px 0px;
 }
 
 .center {
   text-align: center;
   float: center;
+  margin: auto;
 }
 
 .blue {
@@ -97,10 +98,7 @@ footer.branding {
   border: solid;
   padding: 1em;
   text-align: center;
-  /* background: #FFFF99; */
-  /* background: #D2FFB1; */
   background: #EC6B4E;
-  /* background: darkgray; */
   display: flex;
   flex-direction: column;
   width: 40%;
@@ -120,9 +118,7 @@ footer.branding {
 .activities-box {
   border: solid;
   padding: 1em;
-  /* background: #FFFF99; */
   background: #D2FFB1;
-  /* background: #EC6B4E; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -137,26 +133,32 @@ footer.branding {
   background: #D2FFB1;
   display: flex;
   flex-direction: column;
-  /* align-items: left;
-  justify-content: left; */
   width: 40%;
   margin: auto;
   line-height: 2em;
   }
 
-  .suggestion-box {
-    border: solid;
-    padding: 1em;
-    background: rgb(241, 239, 78);
-    display: flex;
-    flex-direction: column;
-    width: 85%;
-    margin: auto;
-    line-height: 2em;
-    }
+.suggestion-box {
+  border: solid;
+  padding: 1em;
+  background: rgb(241, 239, 78);
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: auto;
+  line-height: 2em;
+  }
 
 input {
   line-height: 18px;
+  }
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  line-height: 2em;
   }
 
 
@@ -182,6 +184,16 @@ table th {
 }
 
 /* --- Button /input Styles --- */
+.first-big-button {
+  margin: 10px 10px 10px 0px;
+  padding: 10px;
+  float: left;
+  width: auto;
+  height: 42px;
+  border:2px solid #ccc;
+  font-size: 1em;
+}
+
 .big-button {
   margin: 10px 10px 20px;
   padding: 10px;
@@ -191,6 +203,8 @@ table th {
   border:2px solid #ccc;
   font-size: 1em;
 }
+
+
 
 .fixed-width {
   width: 33%;
