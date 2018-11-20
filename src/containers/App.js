@@ -8,8 +8,7 @@ import Footer from '../components/static/Footer.js';
 import Greeting from '../components/static/Greeting.js';
 
 // other containers
-import Login from './users/Login.js';
-import SignUp from './users/SignUp.js';
+import LogInSignUp from './users/LogInSignUp.js';
 import Activities from './activities/Activities.js';
 import NewActivity from './activities/NewActivity.js';
 import ShowActivity from './activities/ShowActivity.js';
@@ -35,8 +34,9 @@ class App extends Component {
         <div className="wrapper">
               <NavBar />
               <Route path = "/" component={Greeting}/>
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/signup' component={SignUp} />
+              <Route exact path='/login' key ="login" component={LogInSignUp} />
+              <Route exact path='/signup' key="signup" component={LogInSignUp} />
+            
               <Route exact path='/weather' component={WeatherSearch} />
               <Route exact path='/activities' component={Activities} />
               <Route exact path='/activities/new' component={NewActivity} />
