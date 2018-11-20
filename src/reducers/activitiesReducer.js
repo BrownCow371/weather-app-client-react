@@ -4,9 +4,9 @@ export default function activitiesReducer(state, action){
             return {...state, activities: action.payload, loading: false}
         case 'UPDATE_ACTIVITY':
             return {...state, activities: state.activities.map(act => 
-                (act.id === action.payload.id ? action.payload : act)), loading: false }
+                (act.id === action.payload.id ? action.payload : act)), loading: false}
         case 'ADD_ACTIVITY':
-            return {...state, activities: [...state.activities, action.payload], loading: false }
+            return {...state, activities: [...state.activities, action.payload], loading: false}
         case 'REMOVE_ACTIVITY':
             return {...state, activities: state.activities.filter(act => act.id !== action.payload.id), loading: false}
         case 'ACTIVITY_ERROR':
