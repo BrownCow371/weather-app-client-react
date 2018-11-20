@@ -141,7 +141,7 @@ footer.branding {
 .suggestion-box {
   border: solid;
   padding: 1em;
-  background: rgb(241, 239, 78);
+  background:#FEFE1F;
   display: flex;
   flex-direction: column;
   width: 85%;
