@@ -63,8 +63,9 @@ class LogInSignUp extends Component{
         let key = this.props.location.pathname
         // if (this.state.redirect){
             // return  <Redirect to={`/`} />
-        if (this.props.logged_in){
-            return  <h3>Session True</h3>
+        // if (this.props.logged_in){
+        if (!!sessionStorage.jwt){
+            return  <h3>Session True {sessionStorage.user}</h3>
         } else {
             return (
                 <div className="login-box clearfix"> 
@@ -89,7 +90,6 @@ const mapStateToProps = (state) => {
     return {
         userErr: state.errMessages.userErrors, 
         loginErr: state.errMessages.loginError,
-        logged_in: state.session
-    }
+        logged_in: state.session}
 }
 export default connect(mapStateToProps, {loginUser, createUser})(LogInSignUp)
