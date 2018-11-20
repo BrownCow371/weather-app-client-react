@@ -7,7 +7,9 @@ export default function usersReducer(state,action){
         case 'LOG_OUT':
             return {...state, session: false}
         case 'LOGIN_ERROR':
-            return {...state, errMessages: {...state.errMessages, userError: action.payload.error}, loading: false}
+            return {...state, errMessages: {...state.errMessages, loginError: action.payload.error}, loading: false}
+        case 'USER_ERROR':
+            return {...state, errMessages: {...state.errMessages, userErrors: action.payload.error}, loading: false}
         default:
             return state;
     }
