@@ -47,8 +47,8 @@ export function createUser(auth){
 }
 
 export function logOutUser(){
-    // sessionStorage.removeItem('jwt');
-    // sessionStorage.removeItem('user');
     sessionStorage.clear();
+    // need to force window reload in order for sessions to actually be cleared from browser
+    window.location.reload();
     return {type: 'LOG_OUT'};
 }
