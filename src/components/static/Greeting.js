@@ -5,7 +5,8 @@ class Greeting extends Component {
     // needs to be connected to the store so that the User Name is rendered when log in or out
     render(){
 
-        if (sessionStorage.user) {
+        // if (!!sessionStorage.user) {
+        if (this.props.logged_in) {
             return (
                 <div>
                 <h1 className="center">Welcome <span className="blue">{sessionStorage.user}!</span>, to the Weather Based Activity App!</h1>
@@ -25,4 +26,4 @@ const mapStateToProps = (state) => {
     return {logged_in: state.session}
 }
 
-export default connect(null)(Greeting)
+export default connect(mapStateToProps)(Greeting)
