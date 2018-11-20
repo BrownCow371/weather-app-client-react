@@ -1,4 +1,5 @@
 import {checkStatus} from './general.js'
+import {reqHeaders} from './headers.js'
 
 export function fetchActivities() {
     return (dispatch) => {
@@ -21,11 +22,7 @@ export function updateActivity(requestData){
        
         return fetch(`/api/activities/${requestData.activity.id}`, {
             method: "PUT",
-            headers:{
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                
-                },
+            headers: reqHeaders,
             body: JSON.stringify(requestData),
         })
         .then(checkStatus)
@@ -38,12 +35,9 @@ export function addActivity(requestData){
     return (dispatch) => {
         dispatch({type: 'LOADING_DATA'});
 
-        return fetch(`/api/activities`, {
+        return fetch('/api/activities', {
             method: "POST",
-            headers:{
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-                },
+            headers: reqHeaders,
             body: JSON.stringify(requestData),
         })
         .then(checkStatus)
@@ -58,10 +52,7 @@ export function removeActivity(id){
   
         return fetch(`/api/activities/${id}`, {
             method: "DELETE",
-            headers:{
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-                }
+            headers: reqHeaders
         })
         .then(checkStatus)
         .then(activity => dispatch({type: 'REMOVE_ACTIVITY', payload: activity}))
