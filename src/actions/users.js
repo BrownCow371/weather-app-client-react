@@ -15,7 +15,7 @@ export function loginUser(auth){
     .then(checkStatus)
     .then(result => {
         sessionStorage.setItem("jwt", result.jwt);
-        sessionStorage.setItem("user", result.user.name);
+        sessionStorage.setItem("user", result.user);
         dispatch({type: 'LOGIN_SUCCESS'})
     })
     .catch(err => {err.json().then(message  => dispatch({type: 'LOGIN_ERROR', payload: message}))})
@@ -38,7 +38,7 @@ export function createUser(auth){
     .then(checkStatus)
     .then(result => {
         sessionStorage.setItem("jwt", result.jwt);
-        sessionStorage.setItem("user", result.user.name);
+        sessionStorage.setItem("user", result.user);
         dispatch({type: 'LOGIN_SUCCESS'})
     })
     .catch(err => {err.json().then(message  => dispatch({type: 'USER_ERROR', payload: message}))})
