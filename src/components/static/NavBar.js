@@ -2,13 +2,23 @@ import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom';
 import {connect} from 'react-redux'
 import {logOutUser} from '../../actions/users.js'
+// import {browserHistory} from 'react-router-dom';
+
 
 
 class NavBar extends Component {
 
+    logOut = (event) => {
+        event.preventDefault();
+        this.props.logOutUser();
+        sessionStorage.clear();
+        // browserHistory.push('/');
+        }
+
    Logged = () =>{
-        if (this.props.logged_in){
-            return <button className="big-button" onClick={event => this.props.logOutUser()}>Log Out</button>
+        // if (this.props.logged_in){
+        if(sessionStorage.user){
+            return <button className="big-button" onClick={this.logOut}>Log Out</button>
         } else {
             return <button className="big-button"><NavLink to ="/login" exact>Log in</NavLink> </button>
         }
