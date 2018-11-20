@@ -18,6 +18,7 @@ class NavBar extends Component {
         return (
             <div className="navbar clearfix">
                 <button className="first-big-button"><NavLink to ="/" exact>Home</NavLink> </button>
+                <button className="first-big-button"><NavLink to ="/signup" exact>Sign Up</NavLink> </button>
                 {this.Logged()}
                 <button className="big-button"><NavLink to ="/weather" exact>Weather Search</NavLink> </button> 
                 <button className="big-button"><NavLink to ="/activities" exact>Activity List</NavLink> </button> 
