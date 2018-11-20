@@ -18,7 +18,7 @@ export function fetchWeather(zip) {
 export function fetchSuggestion(zip){
   return(dispatch) => {
       dispatch({type: 'LOADING_DATA'});
-      return fetch(`api/weather/${zip}/suggestion`, {
+      return fetch(`/api/weather/${zip}/suggestion`, {
           headers:{
               'Content-Type': 'application/json',
               'Accept': 'application/json'
