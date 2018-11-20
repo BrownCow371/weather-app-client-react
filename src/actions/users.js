@@ -4,7 +4,7 @@ export function loginUser(auth){
     return (dispatch) => {
     dispatch({type: 'LOGGING_USER'});
 
-    return fetch('api/login', {
+    return fetch('/api/login', {
         method: "POST",
         headers:{
             'Content-Type': 'application/json',
@@ -18,6 +18,28 @@ export function loginUser(auth){
         dispatch({type: 'LOGIN_SUCCESS'})
     })
     .catch(err => {err.json().then(message  => dispatch({type: 'LOGIN_ERROR', payload: message}))})
+
+    }
+}
+
+export function createUser(auth){
+    return (dispatch) => {
+    dispatch({type: 'LOGGING_USER'});
+
+    return fetch('/api/users', {
+        method: "POST",
+        headers:{
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+            },
+        body: JSON.stringify(auth)
+    })
+    .then(checkStatus)
+    .then(result => {
+        sessionStorage.setItem("jwt", result.jwt);
+        dispatch({type: 'LOGIN_SUCCESS'})
+    })
+    .catch(err => {err.json().then(message  => dispatch({type: 'USER_ERROR', payload: message}))})
 
     }
 }
