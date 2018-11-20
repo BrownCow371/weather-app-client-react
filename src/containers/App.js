@@ -34,8 +34,8 @@ class App extends Component {
         <div className="wrapper">
               <NavBar />
               <Route path = "/" component={Greeting}/>
-              <Route exact path='/login' key ="login" component={LogInSignUp} />
-              <Route exact path='/signup' key="signup" component={LogInSignUp} />
+              <Route exact path='/login' component={LogInSignUp} />
+              <Route exact path='/signup' component={LogInSignUp} />
             
               <Route exact path='/weather' component={WeatherSearch} />
               <Route exact path='/activities' component={Activities} />
