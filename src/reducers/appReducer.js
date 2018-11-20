@@ -9,7 +9,6 @@ const initialState = {
     loading: false,
     authenticating: false,
     session: false,
-    jwt: {},
     activities: [],
     conditions: [],
     weather: {},
