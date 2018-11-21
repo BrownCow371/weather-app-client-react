@@ -23,7 +23,8 @@ class Activities extends Component {
                     <h2 className="center">Activities List!</h2>
                     <ActivityTable 
                         handleClickRemove={this.handleClickRemove} 
-                        activities={this.props.activities}/>  
+                        activities={this.props.activities}
+                        logged_in={this.props.logged_in}/>  
                 </>
             )
         }
@@ -33,7 +34,8 @@ class Activities extends Component {
 const mapStateToProps = (state) => {
     return {activities: state.activities,
             loading: state.loading,
-            errMessage: state.errMessages.activityError}
+            errMessage: state.errMessages.activityError,
+            logged_in: state.session}
   }
 
 export default connect(mapStateToProps, {removeActivity})(Activities)
