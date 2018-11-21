@@ -2,6 +2,7 @@ import React from 'react'
 
 const UserLoginForm = ({handleSubmit, handleChange, user, form}) => {
 
+    // function to return username field for Signup Page
     const userName = () => {
         if (form ==='/signup') {
             return (
@@ -14,6 +15,7 @@ const UserLoginForm = ({handleSubmit, handleChange, user, form}) => {
         }
     }
 
+    // function to return password confirmation field for Signup Page
     const passwordConfirmation = () => {
         if (form ==='/signup') {
             return (
@@ -25,8 +27,17 @@ const UserLoginForm = ({handleSubmit, handleChange, user, form}) => {
             )
         }
     }
+
+    const pageHeader = () => {
+        if (form ==='/login') {
+            return <h2>Login Page</h2>
+        } else if (form ==='/signup') {
+            return <h2>New User Sign Up Page</h2>
+        }
+    }
     return (
         <form >
+            {pageHeader()}
             {userName()}
             <label><strong> Email: </strong></label>
             <input type="email" name="email" value={user.email} onChange={handleChange}/>
