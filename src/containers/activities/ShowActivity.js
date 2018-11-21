@@ -17,7 +17,9 @@ class ShowActivity extends Component {
                 return <Redirect to="/"/>
             } else {
                 return(
-                    <ActivityBox activity={activity}/>
+                    <ActivityBox 
+                        activity={activity}
+                        logged_in={this.props.logged_in}/>
                 ) 
             }         
         }
@@ -27,7 +29,8 @@ class ShowActivity extends Component {
    
 const mapStateToProps = (state) => {
     return {activities: state.activities,
-            loading: state.loading}
+            loading: state.loading,
+            logged_in: state.session}
   }
 
 export default connect(mapStateToProps)(ShowActivity)
