@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 
 import ActivityRow from './ActivityRow.js'
-import NewActivity from '../../containers/activities/NewActivity.js';
 
 class ActivityTable extends Component {
     constructor(props){
