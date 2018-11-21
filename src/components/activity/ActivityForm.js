@@ -1,9 +1,9 @@
 import React from 'react';
 import ActivityFormErrors from './ActivityFormErrors.js'
 
-const ActivityForm = ({formErrors, title, activity, conditions, handleChange, handleCheckbox, handleSubmit}) => {
+const ActivityForm = ({logged_in, formErrors, title, activity, conditions, handleChange, handleCheckbox, handleSubmit}) => {
 
-    let isDisabled = ((Object.keys(formErrors).find(field => formErrors[field].length > 0)) || activity.desc === "")    
+    let isDisabled = (!logged_in || (Object.keys(formErrors).find(field => formErrors[field].length > 0)) || activity.desc === "")    
     
     return (
     <>
@@ -53,7 +53,9 @@ const ActivityForm = ({formErrors, title, activity, conditions, handleChange, ha
                 </div>
             <input className="first-big-button" type="submit" disabled={isDisabled}/>
         </form>
-        <ActivityFormErrors formErrors={formErrors}/>
+        <ActivityFormErrors 
+            formErrors={formErrors}
+            logged_in={logged_in}/>
     </>
     )
     
