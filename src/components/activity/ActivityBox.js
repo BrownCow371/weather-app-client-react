@@ -1,11 +1,23 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
-const ActivityBox = ({activity}) => {
+const ActivityBox = ({activity, logged_in}) => {
     
-    function renderThis(){
+    const renderThis = () => {
         return !!activity
     }
+
+    const editButton = () => {
+        // Only redner edit BUtton if logged in
+        if (logged_in){
+            return (
+                <button className="center big-button fixed-width">
+                    <Link to={`/activities/${activity.id}/edit`}>Edit Activity</Link>
+                </button>
+            )
+        }
+    }
+
 
     if  (renderThis()) {
         return (
@@ -21,9 +33,7 @@ const ActivityBox = ({activity}) => {
                             {activity.conditions.map (c => <li key={c.id}>{c.desc}</li>)}
                         </ul>
                 </ul>
-                <button className="center big-button fixed-width">
-                    <Link to={`/activities/${activity.id}/edit`}>Edit Activity</Link>
-                </button>
+                {editButton()}
             </div>
             )
     } else {
