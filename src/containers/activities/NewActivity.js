@@ -37,7 +37,7 @@ class NewActivity extends Component {
 
         // send activity to addActivity action, 
         // post fetch redirect to show page for new activity
-        this.props.addActivity(newActivity(), sessionStorage.jwt)
+        this.props.addActivity(newActivity(), sessionStorage.getItem('jwt'))
         .then(action => {
             if (action) {
                 this.setState({ id: action.payload.id})
