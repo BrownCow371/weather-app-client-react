@@ -1,8 +1,8 @@
 
 function authHeader() {
-    // if (sessionStorage.getItem('jwt')){
+    if (sessionStorage.getItem('jwt')){
         return {'AUTHORIZATION': `Bearer ${sessionStorage.getItem('jwt')}`}
-        // }
+        }
 }
 
 export const reqHeaders = Object.assign({
