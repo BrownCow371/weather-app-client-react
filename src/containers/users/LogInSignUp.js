@@ -14,41 +14,8 @@ class LogInSignUp extends Component{
                 email: '',
                 password: '',
                 password_confirmation: ''
-            },
-            redirect: false
+            }
         }
-    }
-
-    handleSubmit =(event) => {
-        event.preventDefault();
-
-        let key = this.props.location.pathname
-
-        if (key === '/signup') {
-            this.props.createUser({user: this.state.user})
-            .then(response => {
-                if (this.props.logged_in){
-                    this.setState({
-                    redirect: true})
-                }    
-             });
-        } else if (key === '/login') {
-            this.props.loginUser({auth: this.state.user})
-            .then(response => {
-                if (this.props.logged_in){
-                    this.setState({
-                    redirect: true})
-                }    
-             });
-        }
-
-        
-        // this.setState({user: {
-        //     name: '',
-        //     email: '',
-        //     password: '',
-        //     passwordConfirmation: ''
-        // }})
     }
 
     handleChange = (event) => {
@@ -59,17 +26,55 @@ class LogInSignUp extends Component{
 
     }
 
+    handleSubmit =(event) => {
+        event.preventDefault();
+
+        let key = this.props.location.pathname
+
+        if (key === '/signup') {
+            this.createUser();
+        } else if (key === '/login') {
+            this.loginUser();
+        }
+    }
+
+    createUser = () => {
+        this.props.createUser({user: this.state.user})
+            .then(response => {
+                if (this.props.logged_in){
+                    this.setState({user: {
+                        name: '',
+                        email: '',
+                        password: '',
+                        passwordConfirmation: ''
+                    }})
+                }    
+                });
+    }
+
+    loginUser = () => {
+        this.props.loginUser({auth: this.state.user})
+            .then(response => {
+                if (this.props.logged_in){
+                    this.setState({user: {
+                        name: '',
+                        email: '',
+                        password: '',
+                        passwordConfirmation: ''
+                    }})
+                }    
+             });
+    }
+
+
     render(){
         let key = this.props.location.pathname
-        // if (this.state.redirect){
-            // return  <Redirect to={`/`} />
-        // if (this.props.logged_in){
-        if (!!sessionStorage.jwt){
-            return  <h3>Session True {sessionStorage.user}</h3>
+        
+        if (this.props.logged_in){
+            return  <h3>{sessionStorage.user}, you are now logged in.</h3>
         } else {
             return (
                 <div className="login-box clearfix"> 
-                    <h3>{key} </h3>
                     <UserForm 
                         user={this.state.user}
                         handleChange={this.handleChange}
