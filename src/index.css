@@ -79,7 +79,7 @@ footer.branding {
   border-top: 2px solid #ccc;
   margin-top: 20px;
   padding-top: 20px;
-  color: white;
+  color: rgb(188, 211, 245);
   font: bold;
 }
 .warning {
