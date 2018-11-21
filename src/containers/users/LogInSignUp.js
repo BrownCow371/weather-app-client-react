@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
 import {loginUser, createUser} from '../../actions/users.js';
 import UserForm from '../../components/user/UserForm.js';
 import UserErrorMessages from '../../components/user/UserErrorMessages.js';
