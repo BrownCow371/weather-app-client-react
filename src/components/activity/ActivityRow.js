@@ -18,7 +18,7 @@ class ActivityRow extends Component {
         this.props.handleClickRemove(id);
     }
 
-    // update likes without using the store
+    // update likes in API without using the store
    handleClickLike = (event) => {
         event.preventDefault();
         let updatedLikes = () => {return {activity: {likes: this.state.likes+1, id: this.props.activity.id}}}
@@ -26,12 +26,25 @@ class ActivityRow extends Component {
             method: "PUT",
             headers:{
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'AUTHORIZATION': `Bearer ${sessionStorage.getItem('jwt')}`
                 },
             body: JSON.stringify(updatedLikes())
         })
         .then(response =>response.json())
         .then(activity => this.setState({likes: activity.likes}))       
+    }
+
+    loggedInColumns = (activity) => {
+        if (this.props.logged_in) {
+            return (
+                <>
+                <td> <Link key={activity.id} to ={`/activities/${activity.id}/edit`}>Edit</Link></td>
+                <td> <button onClick={(event)=>this.handleClickRemove(activity.id, event)}>REMOVE</button> </td>
+                <td> <button onClick={this.handleClickLike}>LIKE</button> </td>
+                </>
+            )
+        }
     }
 
     render(){
@@ -47,10 +60,7 @@ class ActivityRow extends Component {
                 <td>{activity.conditions.map((condition) => (
                     <span key={condition.id}>{condition.desc}, </span>
                 ))}</td>
-
-                <td> <Link key={activity.id} to ={`/activities/${activity.id}/edit`}>Edit</Link></td>
-                <td> <button onClick={(event)=>this.handleClickRemove(activity.id, event)}>REMOVE</button> </td>
-                <td> <button onClick={this.handleClickLike}>LIKE</button> </td>
+                {this.loggedInColumns(activity)}
                 <td>{this.state.likes}</td>
             </tr>
         )
