@@ -11,8 +11,7 @@ class NavBar extends Component {
         }
 
    logButton = () =>{
-        // if (this.props.logged_in){
-        if(sessionStorage.user){
+        if (this.props.logged_in){
             return <button className="big-button" onClick={this.logOut}>Log Out</button>
         } else {
             return <button className="big-button"><NavLink to ="/login" exact>Log in</NavLink> </button>
