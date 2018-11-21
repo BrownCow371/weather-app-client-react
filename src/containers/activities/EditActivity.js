@@ -93,7 +93,8 @@ class EditActivity extends Component {
                             handleSubmit={this.handleSubmit}
                             handleChange={this.handleActivityChange}
                             handleCheckbox={this.handleConditionSelection}
-                            title={`Edit Activity ID: ${this.state.activity.id} Form`}/>
+                            title={`Edit Activity ID: ${this.state.activity.id} Form`}
+                            logged_in={this.props.logged_in}/>
                         <h3 className="warning">{this.props.errMessage}</h3>
                     </div>
             )
@@ -105,7 +106,8 @@ class EditActivity extends Component {
 const mapStateToProps= (state) => {
     return {activities: state.activities,
             conditions: state.conditions,
-            errMessage: state.errMessages.activityError}
+            errMessage: state.errMessages.activityError,
+            logged_in: state.session}
 }
 
 export default connect(mapStateToProps, {updateActivity})(EditActivity)
