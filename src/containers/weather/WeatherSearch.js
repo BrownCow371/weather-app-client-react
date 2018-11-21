@@ -29,9 +29,7 @@ class WeatherSearch extends Component {
 
     render(){
         const isEnabled = this.state.zip.match(/\b\d{5}\b/)
-        // disabled={!isEnabled}
-        
-
+       
         return(
             <>
                 <h2>Search for Current Local Weather:</h2>
@@ -40,7 +38,7 @@ class WeatherSearch extends Component {
                     <label><strong> Enter Zipcode: </strong></label>
                     <input type="text" onChange={this.handleOnChange} value={this.state.zip}/>
                     <p><strong>(Only 5 digit US Zipcodes accepted.   )</strong></p>
-                    <input className="first-big-button" type="submit"/>
+                    <input className="first-big-button" type="submit" disabled={!isEnabled}/>
                 </form>
                 
                 <OneDayWeather 
