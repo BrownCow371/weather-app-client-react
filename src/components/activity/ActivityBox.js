@@ -8,7 +8,7 @@ const ActivityBox = ({activity, logged_in}) => {
     }
 
     const editButton = () => {
-        // Only redner edit BUtton if logged in
+        // Only render edit Button if logged in
         if (logged_in){
             return (
                 <button className="center big-button fixed-width">
