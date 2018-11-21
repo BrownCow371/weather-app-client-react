@@ -62,7 +62,8 @@ class NewActivity extends Component {
                                 handleSubmit={this.handleNewSubmit}
                                 handleChange={this.handleActivityChange}
                                 handleCheckbox={this.handleConditionSelection}
-                                title={"Add New Activity Form"}/>
+                                title={"Add New Activity Form"}
+                                logged_in={this.props.logged_in}/>
                             <h3 className="warning">{this.props.errMessage}</h3>
                         </div>
                     )
@@ -79,7 +80,8 @@ class NewActivity extends Component {
 const mapStateToProps= (state) => {
     return {conditions: state.conditions,
             loading: state.loading,
-            errMessage: state.errMessages.activityError}
+            errMessage: state.errMessages.activityError,
+            logged_in: state.session}
 }
 
 export default connect(mapStateToProps, {addActivity})(NewActivity)
