@@ -22,7 +22,7 @@ class NewActivity extends Component {
                 desc: '', 
                 max_temp: '', 
                 min_temp: '', 
-                max_wind_speed: ''},
+                max_wind_speed: ''}
         }
         this.validateField = validateField.bind(this)
         this.handleActivityChange = handleActivityChange.bind(this);
@@ -34,9 +34,10 @@ class NewActivity extends Component {
         // grab array of condition ids and add to activity object
         let newActivity = () => {return {activity: {...this.state.activity, 
             condition_ids: this.state.activity.conditions.map(c => c.id)}}}
-        // send activity to addActivity action, post fetch redirect to show page for new activity
 
-        this.props.addActivity(newActivity())
+        // send activity to addActivity action, 
+        // post fetch redirect to show page for new activity
+        this.props.addActivity(newActivity(), sessionStorage.jwt)
         .then(action => {
             if (action) {
                 this.setState({ id: action.payload.id})
