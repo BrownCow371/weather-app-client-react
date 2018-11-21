@@ -9,7 +9,7 @@ class Activities extends Component {
 
     handleClickRemove = (id) => {
         if (window.confirm(`Are you sure you want to delete activity id: ${id}?`)) {
-        this.props.removeActivity(id)};
+        this.props.removeActivity(id, sessionStorage.jwt)};
     }
 
     
