@@ -68,7 +68,7 @@ class EditActivity extends Component {
             condition_ids: this.state.activity.conditions.map(c => c.id)}}}
              
         // send activity to updateActivity action, post fetch redirect to show page for updated activity
-        this.props.updateActivity(modifiedActivity())
+        this.props.updateActivity(modifiedActivity(), sessionStorage.jwt)
         .then(action => {
             if(action) {
                 this.setState({redirect: 'SHOW'})
