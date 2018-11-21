@@ -16,13 +16,13 @@ export function fetchActivities() {
     }
 }
 
-export function updateActivity(requestData){
+export function updateActivity(requestData, token){
     return (dispatch) => {
         dispatch({type: 'LOADING_DATA'});
        
         return fetch(`/api/activities/${requestData.activity.id}`, {
             method: "PUT",
-            headers: reqHeaders,
+            headers: reqHeaders(token),
             body: JSON.stringify(requestData),
         })
         .then(checkStatus)
@@ -31,13 +31,13 @@ export function updateActivity(requestData){
     }
 }
 
-export function addActivity(requestData){
+export function addActivity(requestData, token){
     return (dispatch) => {
         dispatch({type: 'LOADING_DATA'});
 
         return fetch('/api/activities', {
             method: "POST",
-            headers: reqHeaders,
+            headers: reqHeaders(token),
             body: JSON.stringify(requestData),
         })
         .then(checkStatus)
@@ -46,13 +46,13 @@ export function addActivity(requestData){
     }
 }
 
-export function removeActivity(id){
+export function removeActivity(id, token){
     return (dispatch) => {
         dispatch({type: 'LOADING_DATA'});
   
         return fetch(`/api/activities/${id}`, {
             method: "DELETE",
-            headers: reqHeaders
+            headers: reqHeaders(token)
         })
         .then(checkStatus)
         .then(activity => dispatch({type: 'REMOVE_ACTIVITY', payload: activity}))
