@@ -10,11 +10,25 @@ class NavBar extends Component {
         this.props.logOutUser();
         }
 
-   logButton = () =>{
+   logButtons = () =>{
         if (this.props.logged_in){
             return <button className="big-button" onClick={this.logOut}>Log Out</button>
         } else {
-            return <button className="big-button"><NavLink to ="/login" exact>Log in</NavLink> </button>
+            return (
+            <>
+                <button className="first-big-button"><NavLink to ="/signup" exact>Sign Up</NavLink> </button>
+                <button className="big-button"><NavLink to ="/login" exact>Log in</NavLink> </button>
+            </>)
+        }
+    }
+
+    newActivityButton =() => {
+        if(this.props.logged_in){
+            return (
+                <button className="big-button">
+                    <NavLink to ="/activities/new" exact>New Activity</NavLink>
+                </button> 
+            )
         }
     }
 
@@ -22,11 +36,10 @@ class NavBar extends Component {
         return (
             <div className="navbar clearfix">
                 <button className="first-big-button"><NavLink to ="/" exact>Home</NavLink> </button>
-                <button className="first-big-button"><NavLink to ="/signup" exact>Sign Up</NavLink> </button>
-                {this.logButton()}
+                {this.logButtons()}
                 <button className="big-button"><NavLink to ="/weather" exact>Weather Search</NavLink> </button> 
                 <button className="big-button"><NavLink to ="/activities" exact>Activity List</NavLink> </button> 
-                <button className="big-button"><NavLink to ="/activities/new" exact>New Activity</NavLink> </button> 
+                {this.newActivityButton()}
             </div>
         )
     }
