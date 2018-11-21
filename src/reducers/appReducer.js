@@ -7,8 +7,7 @@ import usersReducer from './usersReducer';
 
 const initialState = {
     loading: false,
-    authenticating: false,
-    session: false,
+    session: !!sessionStorage.jwt,
     activities: [],
     conditions: [],
     weather: {},
