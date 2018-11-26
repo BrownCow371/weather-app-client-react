@@ -6,7 +6,7 @@ This application allows the user to fetch current weather for a zipcode from the
 
 ## Demo Link
 
-A demo video of the application can be found [here](https://youtu.be/I-fY82hrAY8).
+A demo video of the application can be found [here](https://youtu.be/S7pG2qoc0Ng).
 
 ## Installation
 
